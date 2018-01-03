@@ -1,0 +1,57 @@
+﻿@model MVC.Biblioteca.Models.EditoraViewModel
+@{ Layout = null; }
+
+<div class="grid_dados">
+    <div class="row">
+        <div class="col s1 offset-s11">
+            <span class="flow-text">
+                <a class="btn-floating btn-large waves-effect waves-light teal btn_voltar" title="Voltar" onclick="voltarForm()"><i class="material-icons">arrow_back</i></a>
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <h5>Cadastre uma nova editora</h5>
+        <form class="col s12" action="@Url.Action("Post", "Editora")" method="post">
+            <div class="row">
+                <br />
+                <div class="col s4 offset-s4">
+                    <input placeholder="Nome da Editora" id="nome_editora" type="text" class="validate" value="@Model.nomeEditora" required />
+                    <label for="nome_livro">Nome da Editora</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action" id="btnSalvarEditora">
+                Salvar
+                <i class="material-icons right">save</i>
+            </button>
+        </form>
+
+    </div>
+</div>
+
+
+<script>
+
+    $(".btn_voltar").click(function () {
+        $.get('@Url.Action("BuscarGrid", "Editora")').done(function () {
+            $("#divContentEditoras").show();
+            $(".grid_dados").hide();
+            $("#btnNovaEditora").show();
+            $(".btn_voltar").hide();
+        }).fail(function (xhr) {
+            alert(xhr.responsavelText);
+        });
+    });
+
+    $("#btnSalvarEditora").click(function () {
+
+        if ($("#btSalvarAutor").val() == "") {
+            alert("É obrigatório o preenchimento de todos os campos!");
+            return false;
+        }
+    });
+
+
+
+</script>
+

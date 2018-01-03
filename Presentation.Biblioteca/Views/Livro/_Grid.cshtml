@@ -1,0 +1,69 @@
+﻿@model  IEnumerable<MVC.Biblioteca.Models.LivroViewModel>
+@{ Layout = null; }
+
+<table class="responsive-table bordered highlight centered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>ISBN</th>
+            <th>Data de Publicação</th>
+            <th>Preço</th>
+            <th>ID Autor</th>
+            <th>ID Editora</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.idLivro</td>
+                    <td>@item.nomeLivro</td>
+                    <td>@item.ISBN</td>
+                    <td>@item.dataPubLivro</td>
+                    <td>@item.precoLivro</td>
+                    <td>@item.idAutor</td>
+                    <td>@item.idEditora</td>
+                    <td>
+                        <span class="flow-text">
+                            <a class="btn-floating waves-effect waves-light grey darken-2" title="Editar" onclick="editarDados(@item.idLivro)"><i class="material-icons">mode_edit</i></a>
+                            <a class="btn-floating waves-effect waves-light red" title="Excluir" onclick="excluirDados(@item.idLivro)"><i class="material-icons">delete</i></a>
+                        </span>
+                    </td>
+                </tr>
+
+            }
+        }
+
+    </tbody>
+</table>
+
+<script>
+
+    function editarDados(idLivro) {
+
+        $.get('@Url.Action("editarDados", "Livro")', {
+            idLivro: idLivro
+        }).done(function (data) {
+            $("#divContentLivros").html(data);
+        }).fail(function (hrx) {
+            hrx.responsavelText;
+        });
+    }
+
+    function excluirDados(idLivro){
+
+        $.get('@Url.Action("excluirDados", "Livro")', {
+            idLivro: idLivro
+        }).done(function (data) {
+            $("#divContentLivros").html(data);
+        }).fail(function (hrx) {
+            hrx.responsavelText;
+        });
+    }
+
+
+</script>
+

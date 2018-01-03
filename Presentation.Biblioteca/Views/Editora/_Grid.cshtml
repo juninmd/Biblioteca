@@ -1,0 +1,60 @@
+﻿@model  IEnumerable<MVC.Biblioteca.Models.EditoraViewModel>
+@{ Layout = null; }
+
+<table class="responsive-table bordered highlight centered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome da Editora</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.idEditora</td>
+                    <td>@item.nomeEditora</td>
+                    <td>
+                        <span class="flow-text">
+                            <a class="btn-floating waves-effect waves-light grey darken-2" title="Editar" onclick="editarDados(@item.idEditora)"><i class="material-icons">mode_edit</i></a>
+                            <a class="btn-floating waves-effect waves-light red" title="Excluir" onclick="excluirDados(@item.nomeEditora)"><i class="material-icons">delete</i></a>
+                        </span>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+
+<script>
+
+    function editarDados(idEditora) {
+
+        $.get('@Url.Action("editarDados", "Editora")', {
+            idEditora: idEditora
+        }).done(function (data) {
+            $("#divContentEditoras").html(data);
+        }).fail(function (hrx) {
+            hrx.responsavelText;
+        });
+    }
+
+    function excluirDados(idEditora) {
+
+        $.get('@Url.Action("excluirDados", "Editora")', {
+            idEditora: idEditora
+        }).done(function (data) {
+            $("#divContentEditora").html(data);
+        }).fail(function (hrx) {
+            hrx.responsavelText;
+        });
+    }
+
+
+
+</script>

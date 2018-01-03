@@ -1,0 +1,76 @@
+﻿@model MVC.Biblioteca.Models.LivroViewModel
+
+@{ Layout = null; }
+
+<div class="grid_dados">
+    <div class="row">
+        <div class="col s1 offset-s11">
+            <span class="flow-text">
+                <a class="btn-floating btn-large waves-effect waves-light teal btn_voltar" title="Voltar"><i class="material-icons">arrow_back</i></a>
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <h5>Cadastre um novo livro</h5>
+        <form class="col s12" action="@Url.Action("Post", "Livro")" method="post">
+            <div class="row">
+                <div class="col s4">
+                    <input placeholder="Nome do livro" id="nome_livro" type="text" class="validate" value="@Model.nomeLivro" required />
+                    <label for="nome_livro">Nome do Livro</label>
+                </div>
+                <div class="col s4">
+                    <input placeholder="ISBN" id="isbn_livro" type="text" class="validate" value="@Model.ISBN" required />
+                    <label for="isbn_livro">ISBN</label>
+                </div>
+                <div class="col s4">
+                    <input placeholder="Data de Publicação" id="data_pub" type="text" class="validate" value="@Model.dataPubLivro" required />
+                    <label for="data_pub">Data de Publicação</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s4">
+                    <input placeholder="Preço(R$)" id="preco_livro" type="text" class="validate" value="@Model.precoLivro" required />
+                    <label for="preco_livro">Preço(R$)</label>
+                </div>
+                <div class="col s4">
+                    <input placeholder="ID do Autor" id="id_autor" type="text" class="validate" value="@Model.idAutor" required />
+                    <label for="id_autor">ID do Autor</label>
+                </div>
+                <div class="col s4">
+                    <input placeholder="ID da Editora" id="id_editora" type="text" class="validate" value="@Model.idEditora" required />
+                    <label for="id_editora">ID da Editora</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action" id="btnSalvarLivro">
+                Salvar
+                <i class="material-icons right">save</i>
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+
+    $(".btn_voltar").click(function () {
+        $.get('@Url.Action("BuscarGrid", "Livro")').done(function () {
+            $("#divContentLivros").show();
+            $(".grid_dados").hide();
+            $("#btnNovoLivro").show();
+            $(".btn_voltar").hide();
+        }).fail(function (xhr) {
+            alert(xhr.responsavelText);
+        });
+    });
+
+    $("#btnSalvarLivro").click(function () {
+
+        if ($("#btSalvarLivro").val() == "") {
+            alert("É obrigatório o preenchimento de todos os campos!");
+            return false;
+        }
+    });
+
+
+</script>

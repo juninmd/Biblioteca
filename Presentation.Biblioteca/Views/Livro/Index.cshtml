@@ -1,0 +1,47 @@
+﻿<h4>Livros</h4>
+<div class="container" id="divGridLivros">
+
+    <div class="row">
+        <div class="col s1 offset-s11">
+            <span class="flow-text">
+                <a class="btn-floating btn-large waves-effect waves-light teal" title="Novo" id="btnNovoLivro" onclick="buscarForm()"><i class="material-icons">library_add</i></a>
+            </span>
+        </div>
+    </div>
+
+    <div id="divContentLivros">
+        @*@Html.Partial("_Grid")*@
+    </div>
+    <div id="divCadastroLivros">
+        @*@Html.Partial("_Dados")*@
+    </div>
+</div>
+
+<script>
+
+    var buscarGrid = (function buscar() {
+
+        $.get('@Url.Action("BuscarGrid", "Livro")').done(function (data) {
+            $("#divContentLivros").html(data);
+        }).fail(function (hrx) {
+            alert(hrx.responsavelText);
+        });
+
+        return buscar;
+    })();
+
+    function buscarForm() {
+
+        //chama o controller buscarDados mas ele chama o formulário para um novo cadastro
+        $.get('@Url.Action("BuscarForm", "Livro")').done(function (data) {
+            $("#divCadastroLivros").html(data);
+            $("#divContentLivros").hide();
+            $(".grid_dados").show();
+            $("#btnNovoLivro").hide();
+        }).fail(function (xhr) {
+            alert(xhr.responsavelText);
+        });
+    }
+
+</script>
+
