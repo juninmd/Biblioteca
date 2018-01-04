@@ -9,7 +9,9 @@ namespace Presentation.Biblioteca
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+  //                      "~/Scripts/jquery-{version}.js",
+                         "~/Scripts/jquery-3.2.1.min.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -23,9 +25,22 @@ namespace Presentation.Biblioteca
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/materialize").Include(
+                      "~/Scripts/materialize.min",
+                      "~/Scripts/materialize.min.js",
+                      "~/Scripts/modernizr.min.js",
+                      "~/Scripts/modernizr-2.6.2.js"
+                ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css",
+                      "~/Content/materialize.css",
+                      "~/Content/materialize.min.css"
+                ));
+
+
+
         }
     }
 }

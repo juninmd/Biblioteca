@@ -39,8 +39,8 @@
             idEditora: idEditora
         }).done(function (data) {
             $("#divContentEditoras").html(data);
-        }).fail(function (hrx) {
-            hrx.responsavelText;
+        }).fail(function (xhr) {
+            xhr.responseText;
         });
     }
 
@@ -50,8 +50,8 @@
             idEditora: idEditora
         }).done(function (data) {
             $("#divContentEditora").html(data);
-        }).fail(function (hrx) {
-            hrx.responsavelText;
+        }).fail(function (xhr) {
+            xhr.responseText;
         });
     }
 

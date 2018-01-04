@@ -30,8 +30,8 @@
 
         $.get('@Url.Action("BuscarGrid", "Autor")').done(function (data) {
             $("#divContentAutores").html(data);
-        }).fail(function (hrx) {
-            alert(hrx.responsavelText);
+        }).fail(function (xhr) {
+            alert(xhr.responseText);
         });
 
         return buscar;
@@ -44,8 +44,8 @@
             $("#divContentAutores").hide();
             $(".grid_dados").show();
             $("#btnNovoAutor").hide();
-        }).fail(function (hrx) {
-            alert(hrx.responsavelText);
+        }).fail(function (xhr) {
+            alert(xhr.responseText);
         });
     }
 

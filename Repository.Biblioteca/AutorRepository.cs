@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Biblioteca
 {
-    public class AutorRepository : ILivroService
+    public class AutorRepository : IAutorRepository
     {
 
         private readonly DataBaseConnect _conexao;

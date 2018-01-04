@@ -10,9 +10,12 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using SimpleInjector.Integration.Web.Mvc;
+using SimpleInjector.Integration.Web;
 using Repository.Biblioteca;
 using Domain.Biblioteca.Editora;
 using Domain.Biblioteca.Livro;
+using Domain.Biblioteca.Autor.dtoAutor;
+using System.Reflection;
 
 namespace Presentation.Biblioteca
 {
@@ -28,13 +31,14 @@ namespace Presentation.Biblioteca
 
             var container = new Container();
 
-            container.Register<IEditoraService, EditoraService>(Lifestyle.Singleton);
-            container.Register<IAutorService, AutorService>(Lifestyle.Singleton);
-            container.Register<ILivroService, LivroService>(Lifestyle.Singleton);
+            container.Register<IEditoraAppService, EditoraAppService>();
+            container.Register<IAutorAppService, AutorAppService>();
+            container.Register<ILivroAppService, LivroAppService>();
+            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+            container.RegisterMvcIntegratedFilterProvider();
             container.Verify();
-        
-            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
 
+            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
     }
 }

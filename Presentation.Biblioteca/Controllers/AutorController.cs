@@ -12,9 +12,9 @@ namespace Presentation.Biblioteca.Controllers
 {
     public class AutorController : Controller
     {
-        private readonly IAutorService _autorService;
+        private readonly IAutorAppService _autorService;
 
-        public AutorController(IAutorService autorService)
+        public AutorController(IAutorAppService autorService)
         {
             _autorService = autorService;
         }
@@ -25,18 +25,16 @@ namespace Presentation.Biblioteca.Controllers
             return View();
         }
 
-        [Route("Autor")]
+        
         public ActionResult BuscarGrid()
         {
             try
             {
-                var resposta = _autorService.Get();
-                if (!resposta.IsSuccessStatusCode)
-                {
+                var response = _autorService.Get();
+                if (!response.IsSuccessStatusCode)
                     return View("Erro", "Erro ao buscar autores!");
-                }
-                var autor = JsonConvert.DeserializeObject<IEnumerable<AutorViewModel>>(resposta.Content.ReadAsStringAsync().Result);
-
+                
+                var autor = JsonConvert.DeserializeObject<IEnumerable<AutorViewModel>>(response.Content.ReadAsStringAsync().Result);
                 return View("_Grid", autor);
             }
             catch (Exception ex)
@@ -49,7 +47,7 @@ namespace Presentation.Biblioteca.Controllers
 
             try
             {
-                var resposta = _autorService.Get();
+                var App = _autorService.Get();
                 if (!resposta.IsSuccessStatusCode)
                 {
                     return View("Erro", "Erro ao buscar autores!");
@@ -73,7 +71,7 @@ namespace Presentation.Biblioteca.Controllers
 
 
         [HttpPut]
-        public ActionResult editarDados(int? idAutor)
+        public PartialViewResult editarDados(int? idAutor)
         {
             try
             {
@@ -81,20 +79,20 @@ namespace Presentation.Biblioteca.Controllers
                 if (idAutor.HasValue)
                 {
 
-                    var resposta = _autorService.Get(idAutor);
-                    if (!resposta.IsSuccessStatusCode)
+                    var response = _autorService.Get(idAutor);
+                    if (!response.IsSuccessStatusCode)
                     {
-                        return View("Error", "Erro ao buscar Autor");
+                        return PartialView("Error", "Erro ao buscar Autor");
                     }
 
-                    autor = JsonConvert.DeserializeObject<AutorViewModel>(resposta.Content.ReadAsStringAsync().Result);
+                    autor = JsonConvert.DeserializeObject<AutorViewModel>(response.Content.ReadAsStringAsync().Result);
                 }
 
-                return View("_Form", autor);
+                return PartialView("_Form", autor);
             }
             catch (Exception ex)
             {
-                return View("Erro", ex.Message);
+                return PartialView("Erro", ex.Message);
             }
 
         }
@@ -104,8 +102,8 @@ namespace Presentation.Biblioteca.Controllers
         {
             try
             {
-                var resposta = _autorService.Delete(idAutor);
-                if (!resposta.IsSuccessStatusCode)
+                var response = _autorService.Delete(idAutor);
+                if (!response.IsSuccessStatusCode)
                 {
                     Response.TrySkipIisCustomErrors = true;
                     Response.StatusCode = 400;
@@ -130,8 +128,8 @@ namespace Presentation.Biblioteca.Controllers
         {
             try
             {
-                var resposta = _autorService.Post(autor);
-                if (!resposta.IsSuccessStatusCode)
+                var response = _autorService.Post(autor);
+                if (!response.IsSuccessStatusCode)
                 {
                     Response.TrySkipIisCustomErrors = true;
                     Response.StatusCode = 400;

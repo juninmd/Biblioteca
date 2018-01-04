@@ -9,7 +9,7 @@ using System.Net.Http;
 
 namespace Application.Biblioteca.Services
 {
-    public class AutorService : IAutorService
+    public class AutorAppService : IAutorAppService
     {        
         public HttpResponseMessage Delete(int? idAutor = null)
         {

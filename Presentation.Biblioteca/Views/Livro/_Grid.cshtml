@@ -48,8 +48,8 @@
             idLivro: idLivro
         }).done(function (data) {
             $("#divContentLivros").html(data);
-        }).fail(function (hrx) {
-            hrx.responsavelText;
+        }).fail(function (xhr) {
+            xhr.responseText;
         });
     }
 
@@ -60,7 +60,7 @@
         }).done(function (data) {
             $("#divContentLivros").html(data);
         }).fail(function (hrx) {
-            hrx.responsavelText;
+            xhr.responseText;
         });
     }
 

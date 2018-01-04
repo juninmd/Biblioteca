@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Biblioteca.Autor.dtoAutor
 {
-    public interface ILivroService
+    public interface IAutorRepository
     {
         IEnumerable<AutorDto> Get();
         IEnumerable<AutorDto> GetById(int idAutor);

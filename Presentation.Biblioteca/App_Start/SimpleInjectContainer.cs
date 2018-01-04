@@ -14,20 +14,17 @@ namespace Presentation.Biblioteca.App_Start
 {
     public static class SimpleInjectContainer
     {
-
         //NÃO FUNCIONA! TÁ TUDO NO GLOBAL.ASAX
-
        public static Container RegisterServices()
         {
             var container = new Container();
 
-            container.Register<IAutorService, AutorService>(Lifestyle.Singleton);
-            container.Register<IEditoraService, EditoraService>(Lifestyle.Singleton);
-            container.Register<ILivroService, LivroService>(Lifestyle.Singleton);
+            container.Register<IAutorAppService, AutorAppService>();
+            container.Register<IEditoraAppService, EditoraAppService>();
+            container.Register<ILivroAppService, LivroAppService>();
             container.Verify();
 
             return container;
         }
-
     }
 }

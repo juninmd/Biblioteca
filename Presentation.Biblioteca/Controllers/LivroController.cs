@@ -12,9 +12,9 @@ namespace Presentation.Biblioteca.Controllers
 {
     public class LivroController : Controller
     {
-        private readonly ILivroService _livroService;
+        private readonly ILivroAppService _livroService;
 
-        public LivroController(ILivroService livroService)
+        public LivroController(ILivroAppService livroService)
         {
             _livroService = livroService;
         }
@@ -29,12 +29,12 @@ namespace Presentation.Biblioteca.Controllers
         {
             try
             {
-                var resposta = _livroService.Get();
-                if (!resposta.IsSuccessStatusCode)
+                var response = _livroService.Get();
+                if (response.IsSuccessStatusCode)
                     return View("Erro", "Erro ao buscar livros!");
 
-                var livro = JsonConvert.DeserializeObject<IEnumerable<LivroViewModel>>(resposta.Content.ReadAsStringAsync().Result);
-                return PartialView("_Grid", livro);
+                var livro = JsonConvert.DeserializeObject<IEnumerable<LivroViewModel>>(response.Content.ReadAsStringAsync().Result);
+                return View("_Grid", livro);
             }
             catch (Exception ex)
             {
@@ -74,13 +74,13 @@ namespace Presentation.Biblioteca.Controllers
                 LivroViewModel livro = new LivroViewModel();
                 if (idLivro.HasValue)
                 {
-                    var resposta = _livroService.Get();
-                    if (!resposta.IsSuccessStatusCode)
+                    var response = _livroService.Get();
+                    if (!response.IsSuccessStatusCode)
                     {
                         return View("Erro", "Erro ao buscar dados!");
                     }
 
-                    livro = JsonConvert.DeserializeObject<LivroViewModel>(resposta.Content.ReadAsStringAsync().Result);
+                    livro = JsonConvert.DeserializeObject<LivroViewModel>(response.Content.ReadAsStringAsync().Result);
                 }
 
                 return View("_Form", livro);
@@ -98,8 +98,8 @@ namespace Presentation.Biblioteca.Controllers
 
             try
             {
-                var resposta = _livroService.Delete(idLivro);
-                if (!resposta.IsSuccessStatusCode)
+                var response = _livroService.Delete(idLivro);
+                if (!response.IsSuccessStatusCode)
                 {
                     Response.TrySkipIisCustomErrors = true;
                     Response.StatusCode = 400;
@@ -118,12 +118,13 @@ namespace Presentation.Biblioteca.Controllers
 
         }
 
+        [HttpPost]
         public ActionResult Post(LivroViewModel livro)
         {
             try
             {
-                var resposta = _livroService.Post(livro);
-                if (!resposta.IsSuccessStatusCode)
+                var response = _livroService.Post(livro);
+                if (!response.IsSuccessStatusCode)
                 {
                     Response.TrySkipIisCustomErrors = true;
                     Response.StatusCode = 400;
@@ -139,10 +140,6 @@ namespace Presentation.Biblioteca.Controllers
                 return Content("Erro", ex.Message);
             }
         }
-
-
-
-
 
     }
 }

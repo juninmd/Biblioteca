@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Application.Biblioteca.Interfaces
 {
-    public interface IAutorService
+    public interface IAutorAppService
     {
         HttpResponseMessage Post(object autor);
         HttpResponseMessage Get(int? idAutor = null); 
         HttpResponseMessage Delete(int? idAutor = null);
-        //HttpResponseMessage Put(int idAutor, object autor);
+        HttpResponseMessage Put(AutorDto autor);
     }
 
 }

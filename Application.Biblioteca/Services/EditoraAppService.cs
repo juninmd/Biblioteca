@@ -9,7 +9,7 @@ using System.Net.Http;
 
 namespace Application.Biblioteca.Services
 {
-    public class EditoraService : IEditoraService
+    public class EditoraAppService : IEditoraAppService
     {
 
         public HttpResponseMessage Delete(int? idEditora = null)

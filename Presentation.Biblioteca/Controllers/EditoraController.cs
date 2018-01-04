@@ -12,9 +12,9 @@ namespace Presentation.Biblioteca.Controllers
 {
     public class EditoraController : Controller
     {
-        public readonly IEditoraService _editoraService;
+        public readonly IEditoraAppService _editoraService;
 
-        public EditoraController(IEditoraService editoraService)
+        public EditoraController(IEditoraAppService editoraService)
         {
             _editoraService = editoraService;
         }
@@ -30,13 +30,13 @@ namespace Presentation.Biblioteca.Controllers
         {
             try
             {
-                var resposta = _editoraService.Get();
-                if (!resposta.IsSuccessStatusCode)
+                var response = _editoraService.Get();
+                if (!response.IsSuccessStatusCode)
                 {
                     return View("Erro", "Erro ao buscar livros!");
                 }
 
-                var editora = JsonConvert.DeserializeObject<IEnumerable<EditoraViewModel>>(resposta.Content.ReadAsStringAsync().Result);
+                var editora = JsonConvert.DeserializeObject<IEnumerable<EditoraViewModel>>(response.Content.ReadAsStringAsync().Result);
                 return View("_Grid", editora);
             }
             catch (Exception ex)
@@ -84,11 +84,11 @@ namespace Presentation.Biblioteca.Controllers
                 if (idEditora.HasValue)
                 {
 
-                    var resposta = _editoraService.Get(idEditora);
-                    if(!resposta.IsSuccessStatusCode)
+                    var response = _editoraService.Get(idEditora);
+                    if(!response.IsSuccessStatusCode)
                         return View("Erro", "Erro ao buscar dados!");
 
-                    editora = JsonConvert.DeserializeObject<EditoraViewModel>(resposta.Content.ReadAsStringAsync().Result);
+                    editora = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
                 }
 
                 return View("_Form", editora);
@@ -104,8 +104,8 @@ namespace Presentation.Biblioteca.Controllers
             try
             {
 
-                var resposta = _editoraService.Delete(idEditora);
-                if(!resposta.IsSuccessStatusCode)
+                var response = _editoraService.Delete(idEditora);
+                if(!response.IsSuccessStatusCode)
                 {
                     Response.TrySkipIisCustomErrors = true;
                     Response.StatusCode = 400;
@@ -124,12 +124,13 @@ namespace Presentation.Biblioteca.Controllers
 
         }
 
+        [HttpPost]
         public ActionResult Post(EditoraViewModel editora)
         {
             try
             {
-                var resposta = _editoraService.Post(editora);
-                if (!resposta.IsSuccessStatusCode)
+                var response = _editoraService.Post(editora);
+                if (!response.IsSuccessStatusCode)
                 {
                     Response.TrySkipIisCustomErrors = true;
                     Response.StatusCode = 400;

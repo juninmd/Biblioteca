@@ -10,8 +10,8 @@ namespace API.Biblioteca.Controllers
 {
     public class AutorController : ApiController
     {
-        private readonly ILivroService _autorRepository;
-        public AutorController(ILivroService autorRepository)
+        private readonly IAutorRepository _autorRepository;
+        public AutorController(IAutorRepository autorRepository)
         {
             _autorRepository = autorRepository;
         }

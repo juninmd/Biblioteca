@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Biblioteca.Interfaces
 {
-    public interface IEditoraService
+    public interface IEditoraAppService
     {
         HttpResponseMessage Post(object autor);
         HttpResponseMessage Get(int? idEditora = null);

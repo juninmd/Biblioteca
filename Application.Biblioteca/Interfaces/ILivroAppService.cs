@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Biblioteca.Interfaces
 {
-    public interface ILivroService
+    public interface ILivroAppService
     {
         HttpResponseMessage Post(object livro);
         HttpResponseMessage Get(int? idLivro = null);

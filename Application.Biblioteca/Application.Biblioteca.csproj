@@ -64,14 +64,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IAutorService.cs" />
-    <Compile Include="Interfaces\IEditoraService.cs" />
-    <Compile Include="Interfaces\ILivroService.cs" />
+    <Compile Include="Interfaces\IAutorAppService.cs" />
+    <Compile Include="Interfaces\IEditoraAppService.cs" />
+    <Compile Include="Interfaces\ILivroAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AutorService.cs" />
+    <Compile Include="Services\AutorAppService.cs" />
     <Compile Include="Services\BaseAppService.cs" />
-    <Compile Include="Services\EditoraService.cs" />
-    <Compile Include="Services\LivroService.cs" />
+    <Compile Include="Services\EditoraAppService.cs" />
+    <Compile Include="Services\LivroAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
