@@ -44,7 +44,6 @@ C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\System.Web.WebPages.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\System.Web.WebPages.Razor.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\WebGrease.dll
-C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\System.Web.Http.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\System.Web.Http.WebHost.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\SimpleInjector.Integration.WebApi.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Repository.Biblioteca.dll

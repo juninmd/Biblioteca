@@ -16,6 +16,8 @@ using Domain.Biblioteca.Editora;
 using Domain.Biblioteca.Livro;
 using Domain.Biblioteca.Autor.dtoAutor;
 using System.Reflection;
+using System.Web.Http;
+using System.Net.Http;
 
 namespace Presentation.Biblioteca
 {
@@ -31,9 +33,9 @@ namespace Presentation.Biblioteca
 
             var container = new Container();
 
-            container.Register<IEditoraAppService, EditoraAppService>();
-            container.Register<IAutorAppService, AutorAppService>();
-            container.Register<ILivroAppService, LivroAppService>();
+            container.Register<IEditoraAppService, EditoraAppService>(Lifestyle.Singleton);
+            container.Register<IAutorAppService, AutorAppService>(Lifestyle.Singleton);
+            container.Register<ILivroAppService, LivroAppService>(Lifestyle.Singleton);
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
             container.RegisterMvcIntegratedFilterProvider();
             container.Verify();

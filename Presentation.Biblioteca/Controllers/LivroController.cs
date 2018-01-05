@@ -30,7 +30,7 @@ namespace Presentation.Biblioteca.Controllers
             try
             {
                 var response = _livroService.Get();
-                if (response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                     return Content("Erro", "Erro ao buscar livros!");
 
                 var livro = JsonConvert.DeserializeObject<IEnumerable<LivroViewModel>>(response.Content.ReadAsStringAsync().Result);

@@ -11,15 +11,17 @@ namespace Application.Biblioteca.Services
 {
     public static class BaseAppService
     {
-        private static HttpClient _client = null;
+        private static HttpClient _client;
 
         public static HttpResponseMessage Get(string uri, int? id = null)
         {
+            _client = new HttpClient();
             return _client.GetAsync(uri).Result;
         }
 
         public static HttpResponseMessage Post(string uri, object parametros)
         {
+            _client = new HttpClient();
             return _client.PostAsync(uri, parametros, new JsonMediaTypeFormatter
             {
                 SerializerSettings = new JsonSerializerSettings
@@ -33,20 +35,14 @@ namespace Application.Biblioteca.Services
 
         public static HttpResponseMessage Delete(string uri, int? id = null)
         {
+            _client = new HttpClient();
             return _client.GetAsync(uri).Result;
         }
-
-        //public static HttpResponseMessage Put(string uri, string nomeEditora, int id)
-        //{
-        //    HttpContent conteudo = new StringContent(JsonConvert.SerializeObject(nomeEditora));
-
-        //    return _client.PutAsync(uri, conteudo).Result;
-        //} 
-
 
         public static HttpResponseMessage Put(string uri, object parametros, int id)
         {
             HttpContent conteudo = new StringContent(JsonConvert.SerializeObject(parametros));
+            _client = new HttpClient();
             return _client.PutAsync(uri, conteudo).Result;
         }
 

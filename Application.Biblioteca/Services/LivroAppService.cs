@@ -13,22 +13,24 @@ namespace Application.Biblioteca.Services
     {
         public HttpResponseMessage Delete(int? idAutor = null)
         {
-            return BaseAppService.Delete("http://localhost:5001/Livro/Delete?=id" + idAutor);
+            return BaseAppService.Delete("http://localhost:5001/Livro/Delete" + idAutor);
         }
 
         public HttpResponseMessage Get(int? idAutor = null)
         {
-            return BaseAppService.Get("http://localhost:5001/Livro?/Get" + idAutor);
+            return BaseAppService.Get("http://localhost:5002/api/Livro");
+            //var cliente = new HttpClient();
+            //return cliente.GetAsync("http://localhost:5002/api/Livro").Result;
         }
 
         public HttpResponseMessage Post(object livro)
         {
-            return BaseAppService.Post("http://localhost:5001/Livro/Post", livro);
+            return BaseAppService.Post("http://localhost:5002/api/Livro/Post", livro);
         }
 
         public HttpResponseMessage Put(LivroDto livro)
         {
-            return BaseAppService.Put("http://localhost:5001/Livro/Put", livro, livro.idLivro);
+            return BaseAppService.Put("http://localhost:5002/Livro/Put", livro, livro.idLivro);
         }
 
 

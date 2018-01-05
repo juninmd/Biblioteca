@@ -14,22 +14,22 @@ namespace Application.Biblioteca.Services
 
         public HttpResponseMessage Delete(int? idEditora = null)
         {
-            return BaseAppService.Delete("http://localhost:5001/Editora/Delete?id=" + idEditora);
+            return BaseAppService.Delete("http://localhost:5002/api/Editora" + idEditora);
         }
 
         public HttpResponseMessage Get(int? idEditora = null)
         {
-            return BaseAppService.Get("http://localhost:5001/Editora/Get" + idEditora);
+            return BaseAppService.Get("http://localhost:5002/api/Editora" + idEditora);
         }
 
         public HttpResponseMessage Post(object editora)
         {
-            return BaseAppService.Post("http://localhost:5001/Editora/Post", editora);
+            return BaseAppService.Post("http://localhost:5002/api/Editora", editora);
         }
 
         public HttpResponseMessage Put(EditoraDto editora)
         {
-            return BaseAppService.Put("http://localhost:5001/Editora/Put", editora, editora.idEditora);
+            return BaseAppService.Put("http://localhost:5002/api/Editora", editora, editora.idEditora);
         }
 
     }
