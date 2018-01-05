@@ -31,14 +31,14 @@ namespace Presentation.Biblioteca.Controllers
             {
                 var response = _livroService.Get();
                 if (response.IsSuccessStatusCode)
-                    return View("Erro", "Erro ao buscar livros!");
+                    return Content("Erro", "Erro ao buscar livros!");
 
                 var livro = JsonConvert.DeserializeObject<IEnumerable<LivroViewModel>>(response.Content.ReadAsStringAsync().Result);
                 return View("_Grid", livro);
             }
             catch (Exception ex)
             {
-                return View("Error", ex.Message);
+                return Content("Erro", ex.Message);
             }
         }
 
@@ -89,7 +89,7 @@ namespace Presentation.Biblioteca.Controllers
             }
             catch (Exception ex)
             {
-                return View("Erro", ex.Message);
+                return Content("Erro", ex.Message);
             }
 
         }

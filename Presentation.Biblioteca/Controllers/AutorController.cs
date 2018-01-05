@@ -24,7 +24,6 @@ namespace Presentation.Biblioteca.Controllers
         {
             return View();
         }
-
         
         public ActionResult BuscarGrid()
         {
@@ -32,14 +31,14 @@ namespace Presentation.Biblioteca.Controllers
             {
                 var response = _autorService.Get();
                 if (!response.IsSuccessStatusCode)
-                    return View("Erro", "Erro ao buscar autores!");
+                    return Content("Erro", "Erro ao buscar autores!");
                 
                 var autor = JsonConvert.DeserializeObject<IEnumerable<AutorViewModel>>(response.Content.ReadAsStringAsync().Result);
                 return View("_Grid", autor);
             }
             catch (Exception ex)
             {
-                return View("Erro", ex.Message);
+                return Content("Erro", ex.Message);
             }
         }
 

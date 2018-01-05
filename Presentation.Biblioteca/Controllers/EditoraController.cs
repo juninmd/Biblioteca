@@ -33,7 +33,7 @@ namespace Presentation.Biblioteca.Controllers
                 var response = _editoraService.Get();
                 if (!response.IsSuccessStatusCode)
                 {
-                    return View("Erro", "Erro ao buscar livros!");
+                    return Content("Erro", "Erro ao buscar livros!");
                 }
 
                 var editora = JsonConvert.DeserializeObject<IEnumerable<EditoraViewModel>>(response.Content.ReadAsStringAsync().Result);
@@ -41,7 +41,7 @@ namespace Presentation.Biblioteca.Controllers
             }
             catch (Exception ex)
             {
-                return View("Error", ex.Message);
+                return Content("Erro", ex.Message);
             }
 
         }
