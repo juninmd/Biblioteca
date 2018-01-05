@@ -43,24 +43,6 @@ namespace Presentation.Biblioteca.Controllers
         }
 
 
-        /*
-            try
-            {
-                var resposta = _livroService.Get();
-                if (!resposta.IsSuccessStatusCode)
-                    return View("Erro", "Erro ao buscar livros!");
-
-                var livro = JsonConvert.DeserializeObject<IEnumerable<LivroViewModel>>(resposta.Content.ReadAsStringAsync().Result);
-                return View("_Grid", livro);
-            }
-            catch (Exception ex)
-            {
-                return View("Error", ex.Message);
-            }
-             
-             */
-
-
         [HttpGet]
         public ActionResult BuscarForm()
         {

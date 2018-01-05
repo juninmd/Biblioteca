@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,6 +23,8 @@ namespace Presentation.Biblioteca.App_Start
             container.Register<IAutorAppService, AutorAppService>();
             container.Register<IEditoraAppService, EditoraAppService>();
             container.Register<ILivroAppService, LivroAppService>();
+            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+            container.RegisterMvcIntegratedFilterProvider();
             container.Verify();
 
             return container;

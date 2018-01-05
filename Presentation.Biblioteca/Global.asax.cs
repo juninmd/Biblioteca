@@ -39,6 +39,7 @@ namespace Presentation.Biblioteca
             container.Verify();
 
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+
         }
     }
 }
