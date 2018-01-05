@@ -241,6 +241,9 @@ GO
 			WHERE TL.ID_Autor = @IDAutor
 		END
 
+EXEC  BLTC_SelectLivroAutor 5
+
+
 --PROCEDURES DOS LIVROS TERMINAM AQUI
 
 SELECT name, 

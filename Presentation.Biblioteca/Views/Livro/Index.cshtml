@@ -32,7 +32,6 @@
 
     function buscarForm() {
 
-        //chama o controller buscarDados mas ele chama o formulário para um novo cadastro
         $.get('@Url.Action("BuscarForm", "Livro")').done(function (data) {
             $("#divCadastroLivros").html(data);
             $("#divContentLivros").hide();

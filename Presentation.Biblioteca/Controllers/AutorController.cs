@@ -44,7 +44,6 @@ namespace Presentation.Biblioteca.Controllers
         }
 
         /*
-
             try
             {
                 var App = _autorService.Get();
