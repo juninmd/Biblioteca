@@ -1,8 +1,10 @@
 ﻿using Application.Biblioteca.Interfaces;
 using Application.Biblioteca.Services;
+using Domain.Biblioteca.Editora;
 using MVC.Biblioteca.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -33,7 +35,7 @@ namespace Presentation.Biblioteca.Controllers
                 var response = _editoraService.Get();
                 if (!response.IsSuccessStatusCode)
                 {
-                    return Content("Erro", "Erro ao buscar livros!");
+                    return Content("Erro", "Erro ao buscar editoras!");
                 }
 
                 var editora = JsonConvert.DeserializeObject<IEnumerable<EditoraViewModel>>(response.Content.ReadAsStringAsync().Result);
@@ -68,44 +70,72 @@ namespace Presentation.Biblioteca.Controllers
             
              */
 
-
         [HttpGet]
         public ActionResult BuscarForm()
         {
-            var editora = new EditoraViewModel();
-            return View("_Form", editora);
-        }   
-
-        public ActionResult editarDados(int? idEditora)
-        {
             try
             {
-                EditoraViewModel editora = new EditoraViewModel();
-                if (idEditora.HasValue)
+                var response = _editoraService.Get();
+                if (!response.IsSuccessStatusCode)
                 {
-
-                    var response = _editoraService.Get(idEditora);
-                    if(!response.IsSuccessStatusCode)
-                        return View("Erro", "Erro ao buscar dados!");
-
-                    editora = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
+                    return Content("Erro", "Erro ao buscar editoras!");
                 }
 
+                var editora = new EditoraViewModel();
                 return View("_Form", editora);
             }
             catch (Exception ex)
             {
-                return View("Erro", ex.Message);
+                return Content("Erro", ex.Message);
             }
         }
 
+        public ActionResult Edit(EditoraViewModel editora)
+        {
+            try
+            {
+                var response = _editoraService.Get();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return Content("Erro", "Erro ao buscar editoras!");
+                }
+
+                var editoras = (IEnumerable)JsonConvert.DeserializeObject<IEnumerable<EditoraViewModel>>
+               (response.Content.ReadAsStringAsync().Result).Where(e => e.idEditora == editora.idEditora);
+                return View("_Form", editora);
+            }
+            catch (Exception ex)
+            {
+                return Content("Erro", ex.Message);
+            }
+        }
+
+
+        [HttpPut]
+        public ActionResult EditarDados(EditoraViewModel edt)
+        {
+            try
+            {
+                var response = _editoraService.Put(new EditoraDto {idEditora = edt.idEditora, nomeEditora = edt.nomeEditora});
+                if (!response.IsSuccessStatusCode)
+                    return Content("Erro", "Erro ao buscar dados!");
+
+                var editora = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
+                return View("_Form", editora);
+            }
+            catch (Exception ex)
+            {
+                return Content("Erro", ex.Message);
+            }
+        }
+
+        [HttpDelete]
         public ActionResult excluirDados(int idEditora)
         {
             try
             {
-
                 var response = _editoraService.Delete(idEditora);
-                if(!response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
                     Response.TrySkipIisCustomErrors = true;
                     Response.StatusCode = 400;
@@ -117,8 +147,6 @@ namespace Presentation.Biblioteca.Controllers
             }
             catch (Exception ex)
             {
-                Response.TrySkipIisCustomErrors = true;
-                Response.StatusCode = 500;
                 return Content(ex.Message);
             }
 
@@ -137,17 +165,15 @@ namespace Presentation.Biblioteca.Controllers
                     return Content("Erro ao inserir editora");
                 }
                 Response.StatusCode = 200;
-                return Content("Ok!");
+                return View("_Grid");
             }
             catch (Exception ex)
             {
-                Response.TrySkipIisCustomErrors = true;
-                Response.StatusCode = 500;
                 return Content("Erro", ex.Message);
             }
 
         }
 
-        
+
     }
 }

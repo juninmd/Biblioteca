@@ -3,6 +3,7 @@ using Application.Biblioteca.Services;
 using MVC.Biblioteca.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -46,8 +47,40 @@ namespace Presentation.Biblioteca.Controllers
         [HttpGet]
         public ActionResult BuscarForm()
         {
-            var livro = new LivroViewModel();
-            return View("_Form", livro);
+            try
+            {
+                var response = _livroService.Get();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return Content("Erro", "Erro ao buscar editoras!");
+                }
+
+                var livro = new LivroViewModel();
+                return View("_Form", livro);
+            }
+            catch (Exception ex)
+            {
+                return Content("Erro", ex.Message);
+            }
+        }
+
+        public ActionResult Edit(LivroViewModel livro)
+        {
+            try
+            {
+                var response = _livroService.Get(livro.idLivro);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return Content("Erro", "Erro");
+                }
+                var livros = (IEnumerable)JsonConvert.DeserializeObject<IEnumerable<LivroViewModel>>
+               (response.Content.ReadAsStringAsync().Result).Where(l => l.idLivro == livro.idLivro);
+                return View("_Form", livro);
+            }
+            catch (Exception ex)
+            {
+                return Content("Erro", ex.Message);
+            }
         }
 
         public ActionResult editarDados(int? idLivro)

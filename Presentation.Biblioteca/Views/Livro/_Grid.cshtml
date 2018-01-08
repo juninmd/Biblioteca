@@ -11,6 +11,7 @@
             <th>Preço</th>
             <th>ID Autor</th>
             <th>ID Editora</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -28,7 +29,7 @@
                     <td>@item.idEditora</td>
                     <td>
                         <span class="flow-text">
-                            <a class="btn-floating waves-effect waves-light grey darken-2" title="Editar" onclick="editarDados(@item.idLivro)"><i class="material-icons">mode_edit</i></a>
+                            <a class="btn-floating waves-effect waves-light grey darken-2" title="Editar" onclick="edit(@item.idLivro)"><i class="material-icons">mode_edit</i></a>
                             <a class="btn-floating waves-effect waves-light red" title="Excluir" onclick="excluirDados(@item.idLivro)"><i class="material-icons">delete</i></a>
                         </span>
                     </td>
@@ -41,6 +42,19 @@
 </table>
 
 <script>
+
+    function edit(idLivro) {
+        $.get('@Url.Action("Edit", "Livro")', {
+            idLivro: idLivro
+        }).done(function (data) {
+            $("#divCadastroLivros").html(data);
+            $("#divContentLivros").hide();
+            $(".grid_dados").show();
+            $("#btnNovaEditora").hide();
+        }).fail(function (xhr) {
+            alert(xhr.responseText);
+        });
+    }
 
     function editarDados(idLivro) {
 

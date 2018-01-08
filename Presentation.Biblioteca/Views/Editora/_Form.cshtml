@@ -44,12 +44,18 @@
     });
 
     $("#btnSalvarEditora").click(function () {
+        $.post('@Url.Action("Post", "Editora")').done(function (data) {
+            $("#divContentEditoras").html(data);
+        });
 
-        if ($("#btSalvarAutor").val() == "") {
+        if ($("#nome_editora").val() == "") {
             alert("É obrigatório o preenchimento de todos os campos!");
             return false;
         }
     });
+
+    
+
 
 
 

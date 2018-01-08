@@ -10,7 +10,7 @@ namespace Application.Biblioteca.Interfaces
 {
     public interface IEditoraAppService
     {
-        HttpResponseMessage Post(object autor);
+        HttpResponseMessage Post(object editora);
         HttpResponseMessage Get(int? idEditora = null);
         HttpResponseMessage Delete(int? idEditora = null);
         HttpResponseMessage Put(EditoraDto editora);

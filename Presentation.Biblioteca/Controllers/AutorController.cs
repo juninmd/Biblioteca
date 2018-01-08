@@ -65,10 +65,42 @@ namespace Presentation.Biblioteca.Controllers
         [HttpGet]
         public ActionResult BuscarForm()
         {
-            var autor = new AutorViewModel();
-            return View("_Form", autor);
+            try
+            {
+                var response = _autorService.Get();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return Content("Erro", "Erro!");
+                }
+
+                var autor = new AutorViewModel();
+                return View("_Form", autor);
+            }
+            catch (Exception ex)
+            {
+                return Content("Erro", ex.Message);
+            }
         }
 
+        public ActionResult Edit(AutorViewModel autor)
+        {
+            try
+            {
+                var response = _autorService.Get();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return Content("Erro", "Erro!");
+                }
+
+                var autores = (IEnumerable)JsonConvert.DeserializeObject<IEnumerable<AutorViewModel>>
+                (response.Content.ReadAsStringAsync().Result).Where(a => a.idAutor == autor.idAutor);
+                return View("_Form", autor);
+            }
+            catch (Exception ex)
+            {
+                return Content("Erro", ex.Message);
+            }
+        }
 
         [HttpPut]
         public PartialViewResult editarDados(int? idAutor)

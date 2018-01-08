@@ -19,8 +19,8 @@
                     <td>@item.nomeEditora</td>
                     <td>
                         <span class="flow-text">
-                            <a class="btn-floating waves-effect waves-light grey darken-2" title="Editar" onclick="editarDados(@item.idEditora)"><i class="material-icons">mode_edit</i></a>
-                            <a class="btn-floating waves-effect waves-light red" title="Excluir" onclick="excluirDados(@item.nomeEditora)"><i class="material-icons">delete</i></a>
+                            <a class="btn-floating waves-effect waves-light grey darken-2" onclick="edit(@item.idEditora)" title="Editar" ><i class="material-icons">mode_edit</i></a> 
+                            <a class="btn-floating waves-effect waves-light red" title="Excluir" onclick="excluirDados(@item.idEditora)"><i class="material-icons">delete</i></a>
                         </span>
                     </td>
                 </tr>
@@ -32,15 +32,50 @@
 
 
 <script>
+    
+    function edit(idEditora){
+        $.get('@Url.Action("Edit", "Editora")', {
+            idEditora: idEditora
+        }).done(function (data) {
+            $("#divCadastroEditoras").html(data);
+            $("#divContentEditoras").hide();
+            $(".grid_dados").show();
+            $("#btnNovaEditora").hide();
+            $("#nome_editora").val(data.nomeEditora);
+
+
+
+
+
+        }).fail(function (xhr) {
+            alert(xhr.responseText);
+        });
+    }
 
     function editarDados(idEditora) {
 
-        $.get('@Url.Action("editarDados", "Editora")', {
+        $.get('@Url.Action("BuscarForm", "Editora")', {
             idEditora: idEditora
         }).done(function (data) {
-            $("#divContentEditoras").html(data);
+            $("#divCadastroEditoras").html(data);
+            $("#divContentEditoras").hide();
+            $("#divCadastroEditoras").show();
         }).fail(function (xhr) {
-            xhr.responseText;
+            alert(xhr.responseText);
+        });
+    }
+
+    function buscarForm(idEditora) {
+        //chama o controller buscarDados mas ele chama o formulário para um novo cadastro
+        $.get('@Url.Action("BuscarForm", "Editora")',{
+            idEditora: idEditora
+        }).done(function (data) {
+            $("#divCadastroEditoras").html(data);
+            $("#divContentEditoras").hide();
+            $(".grid_dados").show();
+            $("#btnNovaEditora").hide();
+        }).fail(function (xhr) {
+            alert(xhr.responseText);
         });
     }
 
@@ -50,6 +85,7 @@
             idEditora: idEditora
         }).done(function (data) {
             $("#divContentEditora").html(data);
+            $("");
         }).fail(function (xhr) {
             xhr.responseText;
         });

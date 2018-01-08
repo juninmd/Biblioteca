@@ -14,5 +14,8 @@ namespace MVC.Biblioteca.Models
         public DateTime dataPubLivro { get; set; }
         public double precoLivro { get; set; }
         public int idEditora { get; set; }
+
+        public string DataFormatada => dataPubLivro.ToShortDateString();
+
     }
 }
