@@ -94,15 +94,15 @@ namespace Presentation.Biblioteca.Controllers
         {
             try
             {
-                var response = _editoraService.Get();
+                var response = _editoraService.GetById(new EditoraDto {idEditora = editora.idEditora, nomeEditora = editora.nomeEditora });
                 if (!response.IsSuccessStatusCode)
-                {
                     return Content("Erro", "Erro ao buscar editoras!");
-                }
 
-                var editoras = (IEnumerable)JsonConvert.DeserializeObject<IEnumerable<EditoraViewModel>>
-               (response.Content.ReadAsStringAsync().Result).Where(e => e.idEditora == editora.idEditora);
-                return View("_Form", editora);
+                // var editoras = (IEnumerable)JsonConvert.DeserializeObject<IEnumerable<EditoraViewModel>>
+                //(response.Content.ReadAsStringAsync().Result).Where(e => e.idEditora == editora.idEditora);
+
+                var editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
+                return View("_Form", editoras);
             }
             catch (Exception ex)
             {

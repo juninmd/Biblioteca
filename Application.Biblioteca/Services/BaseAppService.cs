@@ -19,6 +19,13 @@ namespace Application.Biblioteca.Services
             return _client.GetAsync(uri).Result;
         }
 
+        public static HttpResponseMessage GetById(string uri, int id)
+        {
+            _client = new HttpClient();
+            return _client.GetAsync(uri).Result;
+        }
+        
+
         public static HttpResponseMessage Post(string uri, object parametros)
         {
             _client = new HttpClient();

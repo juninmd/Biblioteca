@@ -19,8 +19,14 @@ namespace Application.Biblioteca.Services
 
         public HttpResponseMessage Get(int? idEditora = null)
         {
-            return BaseAppService.Get("http://localhost:5002/api/Editora" + idEditora);
+            return BaseAppService.Get("http://localhost:5002/api/Editora", idEditora);
         }
+
+        public HttpResponseMessage GetById(EditoraDto editora)
+        {
+            return BaseAppService.GetById("http://localhost:5002/api/Editora", editora.idEditora);
+        }
+
 
         public HttpResponseMessage Post(object editora)
         {
