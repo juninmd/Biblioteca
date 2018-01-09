@@ -90,18 +90,21 @@ namespace Presentation.Biblioteca.Controllers
             }
         }
 
-        public ActionResult Edit(EditoraViewModel editora)
+        public ActionResult Edit(int idEditora)
         {
             try
             {
-                var response = _editoraService.GetById(new EditoraDto {idEditora = editora.idEditora, nomeEditora = editora.nomeEditora });
+                //var response = _editoraService.GetById(new EditoraDto { idEditora = editora.idEditora, nomeEditora = editora.nomeEditora });
+                var response = _editoraService.GetById(idEditora);
                 if (!response.IsSuccessStatusCode)
                     return Content("Erro", "Erro ao buscar editoras!");
 
-                // var editoras = (IEnumerable)JsonConvert.DeserializeObject<IEnumerable<EditoraViewModel>>
-                //(response.Content.ReadAsStringAsync().Result).Where(e => e.idEditora == editora.idEditora);
+                var conteudo = response.Content.ReadAsStringAsync().Result;
+                dynamic editoras = JsonConvert.DeserializeObject(conteudo);
 
-                var editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
+                //dynamic editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
+
+                //var editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
                 return View("_Form", editoras);
             }
             catch (Exception ex)
@@ -157,21 +160,16 @@ namespace Presentation.Biblioteca.Controllers
         {
             try
             {
-                var response = _editoraService.Post(editora);
+                var response = _editoraService.Post(new EditoraDto {nomeEditora = editora.nomeEditora});
                 if (!response.IsSuccessStatusCode)
-                {
-                    Response.TrySkipIisCustomErrors = true;
-                    Response.StatusCode = 400;
-                    return Content("Erro ao inserir editora");
-                }
-                Response.StatusCode = 200;
-                return View("_Grid");
+                    return Content("Erro ao cadastrar editora");
+
+                return View("_Grid", editora);
             }
             catch (Exception ex)
             {
                 return Content("Erro", ex.Message);
             }
-
         }
 
 

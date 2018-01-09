@@ -1,5 +1,6 @@
 ﻿using Application.Biblioteca.Interfaces;
 using Application.Biblioteca.Services;
+using Domain.Biblioteca.Livro;
 using MVC.Biblioteca.Models;
 using Newtonsoft.Json;
 using System;
@@ -139,20 +140,20 @@ namespace Presentation.Biblioteca.Controllers
         {
             try
             {
-                var response = _livroService.Post(livro);
+                var response = _livroService.Post(
+                    new LivroDto
+                    {
+                        nomeLivro = livro.nomeLivro, ISBN = livro.ISBN, dataPubLivro = livro.dataPubLivro,
+                        precoLivro = livro.precoLivro, idAutor = livro.idAutor, idEditora = livro.idEditora
+                    }
+                    );
                 if (!response.IsSuccessStatusCode)
-                {
-                    Response.TrySkipIisCustomErrors = true;
-                    Response.StatusCode = 400;
                     return Content("Erro ao cadastrar livro");
-                }
-                Response.StatusCode = 200;
-                return Content("Ok!");
+
+                 return View("_Grid", livro);
             }
             catch (Exception ex)
             {
-                Response.TrySkipIisCustomErrors = true;
-                Response.StatusCode = 500;
                 return Content("Erro", ex.Message);
             }
         }

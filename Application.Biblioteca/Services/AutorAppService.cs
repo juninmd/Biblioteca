@@ -23,7 +23,7 @@ namespace Application.Biblioteca.Services
 
         public HttpResponseMessage Post(object autor)
         {
-            return BaseAppService.Post("http://localhost:5002/api/Autor", autor);
+            return BaseAppService.Post("http://localhost:5002/api/Autor/Post", autor);
         }
 
         public HttpResponseMessage Put(AutorDto autor)

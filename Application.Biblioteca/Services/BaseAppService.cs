@@ -19,7 +19,7 @@ namespace Application.Biblioteca.Services
             return _client.GetAsync(uri).Result;
         }
 
-        public static HttpResponseMessage GetById(string uri, int id)
+        public static HttpResponseMessage GetById(string uri)
         {
             _client = new HttpClient();
             return _client.GetAsync(uri).Result;

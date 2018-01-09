@@ -23,7 +23,7 @@ namespace Application.Biblioteca.Services
             //return cliente.GetAsync("http://localhost:5002/api/Livro").Result;
         }
 
-        public HttpResponseMessage Post(object livro)
+        public HttpResponseMessage Post(LivroDto livro)
         {
             return BaseAppService.Post("http://localhost:5002/api/Livro/Post", livro);
         }

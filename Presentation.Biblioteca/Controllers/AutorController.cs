@@ -1,5 +1,6 @@
 ﻿using Application.Biblioteca.Interfaces;
 using Application.Biblioteca.Services;
+using Domain.Biblioteca.Autor.dtoAutor;
 using MVC.Biblioteca.Models;
 using Newtonsoft.Json;
 using System;
@@ -160,20 +161,14 @@ namespace Presentation.Biblioteca.Controllers
         {
             try
             {
-                var response = _autorService.Post(autor);
+                var response = _autorService.Post(new AutorDto { nomeAutor = autor.nomeAutor, sobrenomeAutor = autor.sobrenomeAutor});
                 if (!response.IsSuccessStatusCode)
-                {
-                    Response.TrySkipIisCustomErrors = true;
-                    Response.StatusCode = 400;
                     return Content("Erro ao inserir Autor");
-                }
-                Response.StatusCode = 200;
-                return Content("Ok!");
+
+                return View("_Grid", autor);
             }
             catch (Exception ex)
             {
-                Response.TrySkipIisCustomErrors = true;
-                Response.StatusCode = 500;
                 return Content("Erro", ex.Message);
             }
         }

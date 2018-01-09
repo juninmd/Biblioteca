@@ -13,14 +13,14 @@
 
     <div class="row">
         <h5>Cadastre um novo livro</h5>
-        <form class="col s12" action="@Url.Action("Post", "Livro")" method="post">
+        <form class="col s12">
             <div class="row">
                 <div class="col s4">
                     <input placeholder="Nome do livro" id="nome_livro" type="text" class="validate" value="@Model.nomeLivro" required />
                     <label for="nome_livro">Nome do Livro</label>
                 </div>
                 <div class="col s4">
-                    <input placeholder="ISBN" id="isbn_livro" type="text" class="validate" value="@Model.ISBN" required />
+                    <input placeholder="ISBN" id="isbn_livro" type="text" class="validate" maxlength="8" value="@Model.ISBN" required />
                     <label for="isbn_livro">ISBN</label>
                 </div>
                 <div class="col s4">
@@ -65,12 +65,24 @@
         });
     });
 
-    $("#btnSalvarLivro").click(function () {
-
-        if ($("#btSalvarLivro").val() == "") {
+    $("#btnSalvarLivro").click(function (e) {
+        e.preventDefault;
+        if ($("#nome_livro").val() == "") {
             alert("É obrigatório o preenchimento de todos os campos!");
             return false;
         }
+        $.post('@Url.Action("Post", "Livro")', {
+            nomeLivro: $("#nome_livro").val(),
+            ISBN: $("#isbn_livro").val(),
+            idAutor: $("#id_autor").val(),
+            dataPubLivro: $("#data_pub").val(),
+            precoLivro: $("#preco_livro").val(),
+            idEditora: $("#id_editora").val()
+        }).done(function () {
+
+        }).fail(function (xhr) {
+            xhr.responseText;
+        });
     });
 
 

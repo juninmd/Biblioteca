@@ -10,7 +10,7 @@ namespace Application.Biblioteca.Interfaces
 {
     public interface ILivroAppService
     {
-        HttpResponseMessage Post(object livro);
+        HttpResponseMessage Post(LivroDto livro);
         HttpResponseMessage Get(int? idLivro = null);
         HttpResponseMessage Delete(int? idLivro = null);
         HttpResponseMessage Put(LivroDto livro);

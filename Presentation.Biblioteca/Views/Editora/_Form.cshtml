@@ -12,15 +12,15 @@
 
     <div class="row">
         <h5>Cadastre uma nova editora</h5>
-        <form class="col s12" action="@Url.Action("Post", "Editora")" method="post">
+        <form class="col s12">
             <div class="row">
                 <br />
                 <div class="col s4 offset-s4">
-                    <input placeholder="Nome da Editora" id="nome_editora" type="text" class="validate" value="@Model.nomeEditora" required />
+                    <input placeholder="Nome da Editora" id="nome_editora" type="text" value="@Model.nomeEditora" required />
                     <label for="nome_livro">Nome da Editora</label>
                 </div>
             </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action" id="btnSalvarEditora">
+            <button class="btn waves-effect waves-light" type="submit" id="btnSalvarEditora">
                 Salvar
                 <i class="material-icons right">save</i>
             </button>
@@ -43,18 +43,22 @@
         });
     });
 
-    $("#btnSalvarEditora").click(function () {
-        $.post('@Url.Action("Post", "Editora")').done(function (data) {
-            $("#divContentEditoras").html(data);
-        });
 
+    $("#btnSalvarEditora").click(function (e) {
+        e.preventDefault;
         if ($("#nome_editora").val() == "") {
             alert("É obrigatório o preenchimento de todos os campos!");
             return false;
         }
+        $.post('@Url.Action("Post", "Editora")', {
+            nomeEditora: $("#nome_editora").val()
+        }).done(function () {
+
+        }).fail(function (xhr) {
+            xhr.responseText;
+        });
     });
 
-    
 
 
 

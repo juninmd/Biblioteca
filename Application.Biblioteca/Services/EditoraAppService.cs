@@ -22,15 +22,15 @@ namespace Application.Biblioteca.Services
             return BaseAppService.Get("http://localhost:5002/api/Editora", idEditora);
         }
 
-        public HttpResponseMessage GetById(EditoraDto editora)
+        public HttpResponseMessage GetById(int idEditora)
         {
-            return BaseAppService.GetById("http://localhost:5002/api/Editora", editora.idEditora);
+            return BaseAppService.GetById("http://localhost:5002/api/Editora?idEditora=" + idEditora);
         }
 
 
-        public HttpResponseMessage Post(object editora)
+        public HttpResponseMessage Post(EditoraDto editora)
         {
-            return BaseAppService.Post("http://localhost:5002/api/Editora", editora);
+            return BaseAppService.Post("http://localhost:5002/api/Editora/Post", editora);
         }
 
         public HttpResponseMessage Put(EditoraDto editora)
