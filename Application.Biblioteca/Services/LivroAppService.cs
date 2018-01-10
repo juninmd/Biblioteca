@@ -11,9 +11,9 @@ namespace Application.Biblioteca.Services
 {
     public class LivroAppService : ILivroAppService
     {
-        public HttpResponseMessage Delete(int? idAutor = null)
+        public HttpResponseMessage Delete(int idAutor)
         {
-            return BaseAppService.Delete("http://localhost:5001/Livro/Delete" + idAutor);
+            return BaseAppService.Delete("http://localhost:5002/api/Livro?idLivro=" + idAutor);
         }
 
         public HttpResponseMessage Get(int? idAutor = null)

@@ -12,7 +12,7 @@ namespace Application.Biblioteca.Interfaces
     {
         HttpResponseMessage Post(LivroDto livro);
         HttpResponseMessage Get(int? idLivro = null);
-        HttpResponseMessage Delete(int? idLivro = null);
+        HttpResponseMessage Delete(int idLivro);
         HttpResponseMessage Put(LivroDto livro);
     }
 }

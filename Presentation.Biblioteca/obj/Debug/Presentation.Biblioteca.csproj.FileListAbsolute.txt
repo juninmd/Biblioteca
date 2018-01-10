@@ -28,6 +28,7 @@ C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Newtonsoft.Json.dll
+C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Repository.Biblioteca.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\SimpleInjector.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\SimpleInjector.Integration.Web.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\SimpleInjector.Integration.Web.Mvc.dll
@@ -46,10 +47,10 @@ C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\WebGrease.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\System.Web.Http.WebHost.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\SimpleInjector.Integration.WebApi.dll
-C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Repository.Biblioteca.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\API.Biblioteca.pdb
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Application.Biblioteca.pdb
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Domain.Biblioteca.pdb
+C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Repository.Biblioteca.pdb
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Microsoft.AI.Web.xml
@@ -70,10 +71,8 @@ C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\System.Web.WebPages.Razor.xml
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Antlr3.Runtime.pdb
-C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\System.Web.Http.xml
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\System.Web.Http.WebHost.xml
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\SimpleInjector.Integration.WebApi.xml
-C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\bin\Repository.Biblioteca.pdb
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\obj\Debug\Presentation.Biblioteca.csprojResolveAssemblyReference.cache
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\obj\Debug\Presentation.Biblioteca.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Presentation.Biblioteca\obj\Debug\Presentation.Biblioteca.pdb

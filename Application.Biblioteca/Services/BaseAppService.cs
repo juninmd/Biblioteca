@@ -40,7 +40,7 @@ namespace Application.Biblioteca.Services
             }).Result;
         }
 
-        public static HttpResponseMessage Delete(string uri, int? id = null)
+        public static HttpResponseMessage Delete(string uri)
         {
             _client = new HttpClient();
             return _client.GetAsync(uri).Result;

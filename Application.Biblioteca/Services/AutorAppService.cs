@@ -11,7 +11,7 @@ namespace Application.Biblioteca.Services
 {
     public class AutorAppService : IAutorAppService
     {        
-        public HttpResponseMessage Delete(int? idAutor = null)
+        public HttpResponseMessage Delete(int idAutor)
         {
             return BaseAppService.Delete("http://localhost:5002/api/Autor" + idAutor);
         }

@@ -20,19 +20,17 @@
                     <td>
                         <span class="flow-text">
                             <a class="btn-floating waves-effect waves-light grey darken-2" onclick="edit(@item.idEditora)" title="Editar" ><i class="material-icons">mode_edit</i></a> 
-                            <a class="btn-floating waves-effect waves-light red" title="Excluir" onclick="excluirDados(@item.idEditora)"><i class="material-icons">delete</i></a>
+                            <a class="btn-floating waves-effect waves-light red" onclick="excluirDados(@item.idEditora)" title="Excluir"><i class="material-icons">delete</i></a>
                         </span>
                     </td>
                 </tr>
             }
         }
-
     </tbody>
 </table>
 
-
 <script>
-    
+
     function edit(idEditora){
         $.get('@Url.Action("Edit", "Editora")', {
             idEditora: idEditora
@@ -63,7 +61,6 @@
     }
 
     function buscarForm(idEditora) {
-        //chama o controller buscarDados mas ele chama o formulário para um novo cadastro
         $.get('@Url.Action("BuscarForm", "Editora")',{
             idEditora: idEditora
         }).done(function (data) {
@@ -77,16 +74,26 @@
     }
 
     function excluirDados(idEditora) {
-
-        $.get('@Url.Action("excluirDados", "Editora")', {
+        $.get('@Url.Action("ExcluirDados", "Editora")', {
             idEditora: idEditora
         }).done(function (data) {
-            $("#divContentEditora").html(data);
-            $("");
+            confirm("Deseja realmente excluir?");
         }).fail(function (xhr) {
             xhr.responseText;
         });
     }
+
+    function ExcluirDados(idEditora) {
+        $.post('@Url.Action("ExcluirDados", "Editora")', {
+            idEditora: idEditora
+        }).done(function (data) {
+            $("#divContentEditoras").html(data);
+            confirm("Deseja realmente excluir?");
+        }).fail(function (xhr) {
+            xhr.responseText;
+        });
+    }
+
 
 
 

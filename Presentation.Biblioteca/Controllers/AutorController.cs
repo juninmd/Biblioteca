@@ -137,20 +137,14 @@ namespace Presentation.Biblioteca.Controllers
             {
                 var response = _autorService.Delete(idAutor);
                 if (!response.IsSuccessStatusCode)
-                {
-                    Response.TrySkipIisCustomErrors = true;
-                    Response.StatusCode = 400;
                     return Content("Erro ao excluir autor!");
-                }
-                Response.StatusCode = 200;
-                return Content("Ok!");
+
+                _autorService.Get();
+                return View("_Grid");
             }
 
             catch (Exception ex)
             {
-                Response.TrySkipIisCustomErrors = true;
-                Response.StatusCode = 500;
-
                 return Content(ex.Message);
             }
 

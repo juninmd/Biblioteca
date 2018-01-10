@@ -10,5 +10,6 @@ C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Domain.Biblioteca\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Domain.Biblioteca\bin\Debug\System.Net.Http.xml
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Domain.Biblioteca\bin\Debug\System.Net.Http.WebRequest.xml
+C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Domain.Biblioteca\obj\Debug\Domain.Biblioteca.csprojResolveAssemblyReference.cache
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Domain.Biblioteca\obj\Debug\Domain.Biblioteca.dll
 C:\Users\Thiago Gabriel\documents\visual studio 2015\Projects\BibliotecaProjeto\Domain.Biblioteca\obj\Debug\Domain.Biblioteca.pdb

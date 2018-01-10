@@ -67,16 +67,44 @@
         });
     }
 
-    function excluirDados(idLivro){
+    function excluirDados(idLivro) {
 
-        $.get('@Url.Action("excluirDados", "Livro")', {
-            idLivro: idLivro
-        }).done(function (data) {
-            $("#divContentLivros").html(data);
-        }).fail(function (hrx) {
-            xhr.responseText;
-        });
+        var conf = confirm("Deseja realmente excluir?");
+        if (conf == true) {
+            $.get('@Url.Action("ExcluirDados", "Livro")', {
+                idLivro: idLivro
+            }).done(function (data) {
+
+            }).fail(function (hrx) {
+                xhr.responseText;
+            });
+        }
+        else {
+            return false;
+        }
     }
+
+    function ExcluirDados(idLivro) {
+
+        var conf = confirm("Deseja realmente excluir?");
+        if (conf = true) {
+            $.post('@Url.Action("ExcluirDados", "Livros")', {
+                idLivro: idLivro
+            }).done(function (data) {
+
+            }).fail(function (xhr) {
+                xhr.responseText;
+            });
+        }
+        else {
+            return false;
+        }
+    }
+
+
+    
+
+
 
 
 </script>

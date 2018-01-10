@@ -48,28 +48,6 @@ namespace Presentation.Biblioteca.Controllers
 
         }
 
-
-        /*            try
-            {
-                var resposta = _editoraService.Get();
-                if (!resposta.IsSuccessStatusCode)
-                {
-                    return View("Erro", "Erro ao buscar livros!");
-                }
-
-                var editora = JsonConvert.DeserializeObject<IEnumerable<EditoraViewModel>>(resposta.Content.ReadAsStringAsync().Result);
-
-                return PartialView("_Grid", editora);
-
-            }
-            catch (Exception ex)
-            {
-                return View("Error", ex.Message);
-
-            }
-            
-             */
-
         [HttpGet]
         public ActionResult BuscarForm()
         {
@@ -132,27 +110,20 @@ namespace Presentation.Biblioteca.Controllers
             }
         }
 
-        [HttpDelete]
-        public ActionResult excluirDados(int idEditora)
+        public ActionResult ExcluirDados(int idEditora)
         {
             try
             {
                 var response = _editoraService.Delete(idEditora);
                 if (!response.IsSuccessStatusCode)
-                {
-                    Response.TrySkipIisCustomErrors = true;
-                    Response.StatusCode = 400;
                     return Content("Erro ao excluir editora");
-                }
-                Response.StatusCode = 200;
-                return Content("Ok!");
 
+                return View("_Grid");
             }
             catch (Exception ex)
             {
                 return Content(ex.Message);
             }
-
         }
 
         [HttpPost]

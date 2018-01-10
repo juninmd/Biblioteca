@@ -12,7 +12,7 @@ namespace Application.Biblioteca.Interfaces
     {
         HttpResponseMessage Post(object autor);
         HttpResponseMessage Get(int? idAutor = null); 
-        HttpResponseMessage Delete(int? idAutor = null);
+        HttpResponseMessage Delete(int idAutor);
         HttpResponseMessage Put(AutorDto autor);
     }
 

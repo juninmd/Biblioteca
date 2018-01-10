@@ -110,26 +110,19 @@ namespace Presentation.Biblioteca.Controllers
 
         }
 
-        public ActionResult excluirDados(int idLivro)
+        public ActionResult ExcluirDados(int idLivro)
         {
-
             try
             {
                 var response = _livroService.Delete(idLivro);
                 if (!response.IsSuccessStatusCode)
-                {
-                    Response.TrySkipIisCustomErrors = true;
-                    Response.StatusCode = 400;
                     return Content("Erro ao excluir livro");
-                }
-                Response.StatusCode = 200;
-                return Content("Ok!");
 
+                var livro = JsonConvert.DeserializeObject<IEnumerable<LivroViewModel>>(response.Content.ReadAsStringAsync().Result);
+                return View("_Grid", livro);
             }
             catch (Exception ex)
             {
-                Response.TrySkipIisCustomErrors = true;
-                Response.StatusCode = 500;
                 return Content(ex.Message);
             }
 

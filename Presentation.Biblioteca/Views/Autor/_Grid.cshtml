@@ -30,7 +30,6 @@
     </tbody>
 </table>
 
-
 <script>
 
     function edit(idAutor) {
@@ -63,7 +62,7 @@
         $.get('@Url.Action("excluirDados", "Autor")', {
             idAutor: idAutor
         }).done(function (data) {
-            $("#divContentAutores").html(data);
+            confirm("Deseja realmente excluir?");
         }).fail(function (xhr) {
             xhr.responseText;
         });

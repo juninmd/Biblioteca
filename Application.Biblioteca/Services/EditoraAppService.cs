@@ -12,9 +12,9 @@ namespace Application.Biblioteca.Services
     public class EditoraAppService : IEditoraAppService
     {
 
-        public HttpResponseMessage Delete(int? idEditora = null)
+        public HttpResponseMessage Delete(int idEditora)
         {
-            return BaseAppService.Delete("http://localhost:5002/api/Editora" + idEditora);
+            return BaseAppService.Delete("http://localhost:5002/api/Editora?idEditora=" + idEditora);
         }
 
         public HttpResponseMessage Get(int? idEditora = null)
