@@ -3,12 +3,19 @@ using Application.Biblioteca.Services;
 using Domain.Biblioteca.Editora;
 using MVC.Biblioteca.Models;
 using Newtonsoft.Json;
+using Presentation.Biblioteca.Controllers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace Presentation.Biblioteca.Controllers
 {
@@ -68,29 +75,30 @@ namespace Presentation.Biblioteca.Controllers
             }
         }
 
-        public ActionResult Edit(int idEditora)
+        public ActionResult Edit(EditoraViewModel editora)
         {
             try
             {
-                //var response = _editoraService.GetById(new EditoraDto { idEditora = editora.idEditora, nomeEditora = editora.nomeEditora });
-                var response = _editoraService.GetById(idEditora);
+                var response = _editoraService.GetById(editora.idEditora);
                 if (!response.IsSuccessStatusCode)
                     return Content("Erro", "Erro ao buscar editoras!");
 
                 var conteudo = response.Content.ReadAsStringAsync().Result;
-                dynamic editoras = JsonConvert.DeserializeObject(conteudo);
-
-                //dynamic editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
-
-                //var editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
+                var editoras = new JavaScriptSerializer().Deserialize<Dictionary<string, EditoraViewModel>>(conteudo);
                 return View("_Form", editoras);
+
+                //var serializador =
             }
             catch (Exception ex)
             {
                 return Content("Erro", ex.Message);
             }
-        }
 
+            //var model = DeserializeJson<EditoraViewModel>(response.Content);
+            //var r = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
+            //var editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result)
+            
+        }
 
         [HttpPut]
         public ActionResult EditarDados(EditoraViewModel edt)
@@ -109,6 +117,7 @@ namespace Presentation.Biblioteca.Controllers
                 return Content("Erro", ex.Message);
             }
         }
+
 
         public ActionResult ExcluirDados(int idEditora)
         {

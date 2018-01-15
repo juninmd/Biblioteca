@@ -11,7 +11,7 @@
     </div>
 
     <div class="row">
-        <h5>Cadastre uma nova editora</h5>
+        <h5 id="tituloViewEdt">Cadastre uma nova editora</h5>
         <form class="col s12">
             <div class="row">
                 <br />
@@ -42,7 +42,6 @@
         });
     });
 
-
     $("#btnSalvarEditora").click(function (e) {
         e.preventDefault;
         if ($("#nome_editora").val() == "") {
@@ -57,6 +56,8 @@
             xhr.responseText;
         });
     });
+
+
 
 
 

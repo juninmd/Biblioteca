@@ -35,13 +35,11 @@
         $.get('@Url.Action("Edit", "Editora")', {
             idEditora: idEditora
         }).done(function (data) {
-            $("#divCadastroEditoras").html(data);
+            $(".btn_voltar").show();
             $("#divContentEditoras").hide();
             $(".grid_dados").show();
             $("#btnNovaEditora").hide();
-            $("#nome_editora").val(data.nomeEditora);
-
-
+            $("#tituloViewEdt").html("<h5>Editar Editora</h5>");
         }).fail(function (xhr) {
             alert(xhr.responseText);
         });
@@ -49,7 +47,7 @@
 
     function editarDados(idEditora) {
 
-        $.get('@Url.Action("BuscarForm", "Editora")', {
+        $.get('@Url.Action("EditarDados", "Editora")', {
             idEditora: idEditora
         }).done(function (data) {
             $("#divCadastroEditoras").html(data);
@@ -68,6 +66,7 @@
             $("#divContentEditoras").hide();
             $(".grid_dados").show();
             $("#btnNovaEditora").hide();
+            $("#nome_editora").html(nomeEditora);
         }).fail(function (xhr) {
             alert(xhr.responseText);
         });

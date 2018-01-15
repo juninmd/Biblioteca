@@ -36,6 +36,7 @@ namespace Application.Biblioteca.Services
         {
             return BaseAppService.Put("http://localhost:5002/api/Editora", editora, editora.idEditora);
         }
+        
 
     }
 }

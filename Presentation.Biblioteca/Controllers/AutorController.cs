@@ -87,11 +87,10 @@ namespace Presentation.Biblioteca.Controllers
         {
             try
             {
-                var response = _autorService.Get();
+                var response = _autorService.Get(autor.idAutor);
                 if (!response.IsSuccessStatusCode)
-                {
                     return Content("Erro", "Erro!");
-                }
+                
 
                 var autores = (IEnumerable)JsonConvert.DeserializeObject<IEnumerable<AutorViewModel>>
                 (response.Content.ReadAsStringAsync().Result).Where(a => a.idAutor == autor.idAutor);

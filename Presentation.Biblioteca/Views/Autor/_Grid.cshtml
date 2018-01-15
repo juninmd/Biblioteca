@@ -41,6 +41,8 @@
             $(".grid_dados").show();
             $("#btnNovoAutor").hide();
             $("#nome_autor").val(data.nomeEditora);
+            $("#tituloViewAutor").html("<h5>Editar Autor</h5>");
+            
         }).fail(function (xhr) {
             alert(xhr.responseText);
         });
