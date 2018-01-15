@@ -13,7 +13,7 @@ namespace Application.Biblioteca.Services
     {        
         public HttpResponseMessage Delete(int idAutor)
         {
-            return BaseAppService.Delete("http://localhost:5002/api/Autor" + idAutor);
+            return BaseAppService.Delete("http://localhost:5002/api/Autor?idAutor=" + idAutor);
         }
 
         public HttpResponseMessage Get(int? idAutor = null)

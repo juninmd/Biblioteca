@@ -130,8 +130,7 @@ namespace Presentation.Biblioteca.Controllers
 
         }
 
-        [HttpDelete]
-        public ActionResult excluirDados(int idAutor)
+        public ActionResult ExcluirDados(int idAutor)
         {
             try
             {
@@ -139,7 +138,6 @@ namespace Presentation.Biblioteca.Controllers
                 if (!response.IsSuccessStatusCode)
                     return Content("Erro ao excluir autor!");
 
-                _autorService.Get();
                 return View("_Grid");
             }
 

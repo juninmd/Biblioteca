@@ -57,15 +57,21 @@
         });
     }
 
-    function excluirDados(idAutor){
+    function excluirDados(idAutor) {
 
-        $.get('@Url.Action("excluirDados", "Autor")', {
-            idAutor: idAutor
-        }).done(function (data) {
-            confirm("Deseja realmente excluir?");
-        }).fail(function (xhr) {
-            xhr.responseText;
-        });
+        var conf = confirm("Deseja realmente excluir?");
+        if (conf == true) {
+            $.get('@Url.Action("ExcluirDados", "Autor")', {
+                idAutor: idAutor
+            }).done(function (data) {
+
+            }).fail(function (hrx) {
+                xhr.responseText;
+            });
+        }
+        else {
+            return false;
+        }
     }
 
 </script>

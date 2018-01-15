@@ -57,7 +57,6 @@
     }
 
     function editarDados(idLivro) {
-
         $.get('@Url.Action("editarDados", "Livro")', {
             idLivro: idLivro
         }).done(function (data) {
@@ -84,22 +83,6 @@
         }
     }
 
-    function ExcluirDados(idLivro) {
-
-        var conf = confirm("Deseja realmente excluir?");
-        if (conf = true) {
-            $.post('@Url.Action("ExcluirDados", "Livros")', {
-                idLivro: idLivro
-            }).done(function (data) {
-
-            }).fail(function (xhr) {
-                xhr.responseText;
-            });
-        }
-        else {
-            return false;
-        }
-    }
 
 
     

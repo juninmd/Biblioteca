@@ -27,7 +27,6 @@ namespace Application.Biblioteca.Services
             return BaseAppService.GetById("http://localhost:5002/api/Editora?idEditora=" + idEditora);
         }
 
-
         public HttpResponseMessage Post(EditoraDto editora)
         {
             return BaseAppService.Post("http://localhost:5002/api/Editora/Post", editora);

@@ -74,25 +74,22 @@
     }
 
     function excluirDados(idEditora) {
-        $.get('@Url.Action("ExcluirDados", "Editora")', {
-            idEditora: idEditora
-        }).done(function (data) {
-            confirm("Deseja realmente excluir?");
-        }).fail(function (xhr) {
-            xhr.responseText;
-        });
+
+        var conf = confirm("Deseja realmente excluir?");
+        if (conf == true) {
+            $.get('@Url.Action("ExcluirDados", "Editora")', {
+                idEditora: idEditora
+            }).done(function (data) {
+
+            }).fail(function (hrx) {
+                xhr.responseText;
+            });
+        }
+        else {
+            return false;
+        }
     }
 
-    function ExcluirDados(idEditora) {
-        $.post('@Url.Action("ExcluirDados", "Editora")', {
-            idEditora: idEditora
-        }).done(function (data) {
-            $("#divContentEditoras").html(data);
-            confirm("Deseja realmente excluir?");
-        }).fail(function (xhr) {
-            xhr.responseText;
-        });
-    }
 
 
 

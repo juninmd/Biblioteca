@@ -43,7 +43,7 @@ namespace Application.Biblioteca.Services
         public static HttpResponseMessage Delete(string uri)
         {
             _client = new HttpClient();
-            return _client.GetAsync(uri).Result;
+            return _client.DeleteAsync(uri).Result;
         }
 
         public static HttpResponseMessage Put(string uri, object parametros, int id)
