@@ -71,12 +71,13 @@
 
     $("#btnSalvarLivro").click(function (e, idLivro, nomeLivro, ISBN, idAutor, dataPubLivro, precoLivro, idEditora) {
         e.preventDefault;
-        if ($("#nome_livro").val() == "") {
+        if ($("#nome_livro").val() == "" || $("isbn_livro").val() == "" || $("#id_autor").val() == "", $("#data_pub").val() == "" ||
+            $("#preco_livro").val() == "" || $("#id_editora").val() == "") {
             alert("É obrigatório o preenchimento de todos os campos!");
             return false;
         }
         $.post('@Url.Action("Post", "Livro")', {
-            idLivro: $("#id_livro"),
+            idLivro: $("#id_livro").val(),
             nomeLivro: $("#nome_livro").val(),
             ISBN: $("#isbn_livro").val(),
             idAutor: $("#id_autor").val(),
