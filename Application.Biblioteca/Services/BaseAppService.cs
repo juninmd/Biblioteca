@@ -46,13 +46,12 @@ namespace Application.Biblioteca.Services
             return _client.DeleteAsync(uri).Result;
         }
 
-        public static HttpResponseMessage Put(string uri, object parametros, int id)
+        public static HttpResponseMessage Put(string uri, object parametros, int? id)
         {
             HttpContent conteudo = new StringContent(JsonConvert.SerializeObject(parametros));
             _client = new HttpClient();
             return _client.PutAsync(uri, conteudo).Result;
         }
-
 
 
     }

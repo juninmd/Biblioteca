@@ -1,5 +1,6 @@
 ﻿using Application.Biblioteca.Interfaces;
 using Application.Biblioteca.Services;
+using Domain.Biblioteca.Autor;
 using Domain.Biblioteca.Editora;
 using Domain.Biblioteca.Livro;
 using Repository.Biblioteca;
@@ -20,6 +21,9 @@ namespace API.Biblioteca.App_Start
             container.Register<IEditoraRepository, EditoraRepository>();
             container.Register<Domain.Biblioteca.Autor.dtoAutor.IAutorRepository, AutorRepository>();
             container.Register<ILivroRepository, LivroRepository>();
+            container.Register<IEditoraService, EditoraService>(); //Regras do PUT/POST
+            container.Register<IAutorService, AutorService>();
+            container.Register<ILivroService, LivroService>();
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             container.Verify();
 

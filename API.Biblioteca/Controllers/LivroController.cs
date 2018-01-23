@@ -11,9 +11,12 @@ namespace API.Biblioteca.Controllers
     public class LivroController : ApiController
     {
         private readonly ILivroRepository _livroRepository;
-        public LivroController(ILivroRepository livroRepository)
+        private readonly ILivroService _livroService;
+
+        public LivroController(ILivroRepository livroRepository, ILivroService livroService)
         {
             _livroRepository = livroRepository;
+            _livroService = livroService;
         }
 
         public IHttpActionResult Post(LivroDto livro)
@@ -24,7 +27,7 @@ namespace API.Biblioteca.Controllers
                 livro.idEditora.Equals(null))
                return BadRequest("Informe os dados do livro!");
 
-            _livroRepository.Post(livro);
+             _livroService.Post(livro);
              return Ok();
         }
 

@@ -65,11 +65,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autor\AutorDto.cs" />
+    <Compile Include="Autor\AutorService.cs" />
     <Compile Include="Autor\IAutorRepository.cs" />
+    <Compile Include="Autor\IAutorService.cs" />
     <Compile Include="Editora\EditoraDto.cs" />
+    <Compile Include="Editora\EditoraService.cs" />
     <Compile Include="Editora\IEditoraRepository.cs" />
+    <Compile Include="Editora\IEditoraService.cs" />
+    <Compile Include="Livro\ILivroService.cs" />
     <Compile Include="Livro\LivroDto.cs" />
     <Compile Include="Livro\ILivroRepository.cs" />
+    <Compile Include="Livro\LivroService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

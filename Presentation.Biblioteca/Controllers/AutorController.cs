@@ -156,6 +156,7 @@ namespace Presentation.Biblioteca.Controllers
                 if (!response.IsSuccessStatusCode)
                     return Content("Erro ao inserir Autor");
 
+                _autorService.Get();
                 return View("_Grid", autor);
             }
             catch (Exception ex)

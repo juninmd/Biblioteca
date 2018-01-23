@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Biblioteca.Editora
 {
-    public class EditoraDto
+    public interface IEditoraService
     {
-        public int? idEditora { get; set; }
-        public string nomeEditora { get; set; }
+        void Post(EditoraDto editora);
     }
 }

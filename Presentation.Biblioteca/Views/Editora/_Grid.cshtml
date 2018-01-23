@@ -35,11 +35,13 @@
         $.get('@Url.Action("Edit", "Editora")', {
             idEditora: idEditora
         }).done(function (data) {
-            $(".btn_voltar").show();
+            $("#divCadastroEditoras").html(data);
             $("#divContentEditoras").hide();
+            $(".btn_voltar").show();
             $(".grid_dados").show();
             $("#btnNovaEditora").hide();
             $("#tituloViewEdt").html("<h5>Editar Editora</h5>");
+            $("#nome_editora").val(data.nomeEditora);
         }).fail(function (xhr) {
             alert(xhr.responseText);
         });
@@ -47,12 +49,11 @@
 
     function editarDados(idEditora) {
 
-        $.get('@Url.Action("EditarDados", "Editora")', {
-            idEditora: idEditora
+        $.post('@Url.Action("Post", "Editora")', {
+            idEditora: idEditora,
+            nomeEditora: $("#nome_editora").val()
         }).done(function (data) {
-            $("#divCadastroEditoras").html(data);
-            $("#divContentEditoras").hide();
-            $("#divCadastroEditoras").show();
+                
         }).fail(function (xhr) {
             alert(xhr.responseText);
         });
@@ -88,9 +89,5 @@
             return false;
         }
     }
-
-
-
-
 
 </script>

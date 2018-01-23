@@ -12,18 +12,22 @@ namespace API.Biblioteca.Controllers
     public class EditoraController : ApiController
     {
         private readonly IEditoraRepository _editoraRepository;
+        private readonly IEditoraService _editoraService;
 
-        public EditoraController(IEditoraRepository editoraRepository)
+        public EditoraController(IEditoraRepository editoraRepository, IEditoraService editoraService)
         {
             _editoraRepository = editoraRepository;
+            _editoraService = editoraService;
         }
 
         public IHttpActionResult Post(EditoraDto editora)
         {
-            if (string.IsNullOrEmpty(editora.nomeEditora))
-                return BadRequest("Informar dados da editora");
+            //if (string.IsNullOrEmpty(editora.nomeEditora))
+            //    return BadRequest("Informar dados da editora");
 
-            _editoraRepository.Post(editora);
+            //_editoraRepository.Post(editora);
+
+            _editoraService.Post(editora);
             return Ok();
         }
 
@@ -51,6 +55,12 @@ namespace API.Biblioteca.Controllers
             _editoraRepository.Put(editora);
             return Ok();
         }
+
+        //public IHttpActionResult PostPut(EditoraDto editora)
+        //{
+        //    _editoraService.Post(editora);
+        //    return Ok();
+        //}
 
     }
 }

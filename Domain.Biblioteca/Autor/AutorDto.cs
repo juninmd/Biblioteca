@@ -8,7 +8,7 @@ namespace Domain.Biblioteca.Autor.dtoAutor
 {
     public class AutorDto
     {
-        public int idAutor { get; set; }
+        public int? idAutor { get; set; }
         public string nomeAutor { get; set; }
         public string sobrenomeAutor { get; set; }
 

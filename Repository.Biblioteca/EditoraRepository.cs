@@ -20,7 +20,6 @@ namespace Repository.Biblioteca
 
         public IEnumerable<EditoraDto> Get()
         {
-
             _conexao.ExecutarProcedure("BLTC_SelectEditora");
 
             var editoras = new List<EditoraDto>();

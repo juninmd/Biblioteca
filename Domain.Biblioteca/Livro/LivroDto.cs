@@ -8,7 +8,7 @@ namespace Domain.Biblioteca.Livro
 {
     public class LivroDto
     {
-        public int idLivro { get; set; }
+        public int? idLivro { get; set; }
         public string nomeLivro { get; set; }
         public string ISBN { get; set; }
         public int idAutor { get; set; }

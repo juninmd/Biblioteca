@@ -83,22 +83,18 @@ namespace Presentation.Biblioteca.Controllers
                 if (!response.IsSuccessStatusCode)
                     return Content("Erro", "Erro ao buscar editoras!");
 
-                var conteudo = response.Content.ReadAsStringAsync().Result;
-                var editoras = new JavaScriptSerializer().Deserialize<Dictionary<string, EditoraViewModel>>(conteudo);
-                return View("_Form", editoras);
 
-                //var serializador =
+                var autores = (IEnumerable)JsonConvert.DeserializeObject<IEnumerable<EditoraViewModel>>
+                (response.Content.ReadAsStringAsync().Result).Where(a => a.idEditora == editora.idEditora);
+
+                return View("_Form", editora);
             }
             catch (Exception ex)
             {
                 return Content("Erro", ex.Message);
             }
-
-            //var model = DeserializeJson<EditoraViewModel>(response.Content);
-            //var r = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
-            //var editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result)
-            
         }
+        //var editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result)
 
         [HttpPut]
         public ActionResult EditarDados(EditoraViewModel edt)
@@ -136,13 +132,13 @@ namespace Presentation.Biblioteca.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post(EditoraViewModel editora)
+        public ActionResult PostPut(EditoraViewModel editora, int? idEditora = null)
         {
             try
             {
-                var response = _editoraService.Post(new EditoraDto {nomeEditora = editora.nomeEditora});
+                var response = _editoraService.PostPut(new EditoraDto {idEditora = editora.idEditora, nomeEditora = editora.nomeEditora});
                 if (!response.IsSuccessStatusCode)
-                    return Content("Erro ao cadastrar editora");
+                    return Content("Erro");
 
                 return View("_Grid", editora);
             }
@@ -151,6 +147,23 @@ namespace Presentation.Biblioteca.Controllers
                 return Content("Erro", ex.Message);
             }
         }
+
+        //[HttpPost]
+        //public ActionResult Post(EditoraViewModel editora)
+        //{
+        //    try
+        //    {
+        //        var response = _editoraService.Post(new EditoraDto {nomeEditora = editora.nomeEditora});
+        //        if (!response.IsSuccessStatusCode)
+        //            return Content("Erro ao cadastrar editora");
+
+        //        return View("_Grid", editora);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Content("Erro", ex.Message);
+        //    }
+        //}
 
 
     }

@@ -16,7 +16,7 @@
             <div class="row">
                 <br />
                 <div class="col s4 offset-s4">
-                    <input placeholder="Nome da Editora" id="nome_editora" type="text" value="@Model.nomeEditora" required />
+                    <input placeholder="Nome da Editora" id="nome_editora" type="text" name="nome_editora" value="@Model.nomeEditora" required />
                     <label for="nome_livro">Nome da Editora</label>
                 </div>
             </div>
@@ -42,13 +42,14 @@
         });
     });
 
-    $("#btnSalvarEditora").click(function (e) {
+    $("#btnSalvarEditora").click(function (e, idEditora) {
         e.preventDefault;
         if ($("#nome_editora").val() == "") {
             alert("É obrigatório o preenchimento de todos os campos!");
             return false;
         }
-        $.post('@Url.Action("Post", "Editora")', {
+        $.post('@Url.Action("PostPut", "Editora")', {
+            idEditora: idEditora,
             nomeEditora: $("#nome_editora").val()
         }).done(function () {
 
@@ -56,6 +57,18 @@
             xhr.responseText;
         });
     });
+
+    @*function salvarDados(idEditora) {
+
+        $.post('@Url.Action("PostPut", "Editora")', {
+            idEditora: idEditora,
+            nomeEditora: $("#nome_editora").val()
+        }).done(function (data) {
+
+        }).fail(function (xhr) {
+            alert(xhr.responseText);
+        });
+    }*@
 
 
 
