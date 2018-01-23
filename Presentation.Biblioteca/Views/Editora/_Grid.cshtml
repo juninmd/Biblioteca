@@ -31,9 +31,10 @@
 
 <script>
 
-    function edit(idEditora){
+    function edit(idEditora, nomeEditora){
         $.get('@Url.Action("Edit", "Editora")', {
-            idEditora: idEditora
+            idEditora: idEditora,
+            nomeEditora: nomeEditora
         }).done(function (data) {
             $("#divCadastroEditoras").html(data);
             $("#divContentEditoras").hide();
@@ -41,25 +42,14 @@
             $(".grid_dados").show();
             $("#btnNovaEditora").hide();
             $("#tituloViewEdt").html("<h5>Editar Editora</h5>");
-            $("#nome_editora").val(data.nomeEditora);
+            $("#edt-div").show();
+            $("#nome_editora").val(nomeEditora);
         }).fail(function (xhr) {
             alert(xhr.responseText);
         });
     }
 
-    function editarDados(idEditora) {
-
-        $.post('@Url.Action("Post", "Editora")', {
-            idEditora: idEditora,
-            nomeEditora: $("#nome_editora").val()
-        }).done(function (data) {
-                
-        }).fail(function (xhr) {
-            alert(xhr.responseText);
-        });
-    }
-
-    function buscarForm(idEditora) {
+    @*function buscarForm(idEditora) {
         $.get('@Url.Action("BuscarForm", "Editora")',{
             idEditora: idEditora
         }).done(function (data) {
@@ -71,7 +61,7 @@
         }).fail(function (xhr) {
             alert(xhr.responseText);
         });
-    }
+    }*@
 
     function excluirDados(idEditora) {
 

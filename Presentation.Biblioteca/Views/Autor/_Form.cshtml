@@ -15,6 +15,10 @@
         <h5 id="tituloViewAutor">Cadastre um novo autor</h5>
         <form class="col s12">
             <div class="row">
+                <div class="col s4 offset-s4" id="autor-div">
+                    <input placeholder="ID do Autor" id="id_autor" type="text" name="id_autor" value="@Model.idAutor" required />
+                    <label for="id_autor">ID do Autor</label>
+                </div>
                 <div class="col s5">
                     <input placeholder="Nome do Autor" id="nome_autor" type="text" class="validate" value="@Model.nomeAutor" required />
                     <label for="nome_livro">Nome do Autor</label>
@@ -24,7 +28,7 @@
                     <label for="nome_livro">Sobrenome do Autor</label>
                 </div>
             </div>
-            <button class="btn waves-effect waves-light" type="submit" id="btnSalvarAutor" onclick="">
+            <button class="btn waves-effect waves-light" type="submit" id="btnSalvarAutor" >
                 Salvar
                 <i class="material-icons right">save</i>
             </button>
@@ -46,13 +50,14 @@
         });
     });
 
-    $("#btnSalvarAutor").click(function (e) {
+    $("#btnSalvarAutor").click(function (e, idAutor, nomeAutor, sobrenomeAutor) {
         e.preventDefault;
         if ($("nome_autor").val() == "" || $("sobrenome_autor").val() == "") {
             alert("É obrigatório o preenchimento de todos os campos!");
             return false;
         }
         $.post('@Url.Action("Post", "Autor")', {
+            idAutor: $("#id_autor").val(),
             nomeAutor: $("#nome_autor").val(),
             sobrenomeAutor: $("#sobrenome_autor").val()
         }).done(function () {

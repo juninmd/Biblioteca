@@ -136,7 +136,7 @@ namespace Presentation.Biblioteca.Controllers
                 var response = _livroService.Post(
                     new LivroDto
                     {
-                        nomeLivro = livro.nomeLivro, ISBN = livro.ISBN, dataPubLivro = livro.dataPubLivro,
+                        idLivro = livro.idLivro, nomeLivro = livro.nomeLivro, ISBN = livro.ISBN, dataPubLivro = livro.dataPubLivro,
                         precoLivro = livro.precoLivro, idAutor = livro.idAutor, idEditora = livro.idEditora
                     }
                     );

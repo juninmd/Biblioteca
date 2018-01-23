@@ -152,11 +152,10 @@ namespace Presentation.Biblioteca.Controllers
         {
             try
             {
-                var response = _autorService.Post(new AutorDto { nomeAutor = autor.nomeAutor, sobrenomeAutor = autor.sobrenomeAutor});
+                var response = _autorService.Post(new AutorDto {idAutor = autor.idAutor, nomeAutor = autor.nomeAutor, sobrenomeAutor = autor.sobrenomeAutor});
                 if (!response.IsSuccessStatusCode)
                     return Content("Erro ao inserir Autor");
 
-                _autorService.Get();
                 return View("_Grid", autor);
             }
             catch (Exception ex)

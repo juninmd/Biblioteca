@@ -32,7 +32,7 @@
 
 <script>
 
-    function edit(idAutor) {
+    function edit(idAutor, nomeAutor, sobrenomeAutor) {
         $.get('@Url.Action("Edit", "Autor")', {
             idAutor: idAutor
         }).done(function (data) {
@@ -42,6 +42,7 @@
             $("#btnNovoAutor").hide();
             $("#nome_autor").val(data.nomeAutor);
             $("#tituloViewAutor").html("<h5>Editar Autor</h5>");
+            $("#autor-div").show();
         }).fail(function (xhr) {
             alert(xhr.responseText);
         });

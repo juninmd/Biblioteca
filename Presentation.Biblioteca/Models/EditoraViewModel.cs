@@ -7,7 +7,7 @@ namespace MVC.Biblioteca.Models
 {
     public class EditoraViewModel
     {
-        public int  idEditora { get; set; }
+        public int?  idEditora { get; set; }
         public string nomeEditora { get; set; }
     }
 }

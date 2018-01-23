@@ -43,7 +43,7 @@
 
 <script>
 
-    function edit(idLivro) {
+    function edit(idLivro, nomeLivro, ISBN, idAutor, dataPubLivro, precoLivro, idEditora) {
         $.get('@Url.Action("Edit", "Livro")', {
             idLivro: idLivro
         }).done(function (data) {
@@ -52,6 +52,7 @@
             $(".grid_dados").show();
             $("#btnNovaEditora").hide();
             $("#tituloViewLivro").html("<h5>Editar Livro</h5>");
+            $("#livro-div").show();
         }).fail(function (xhr) {
             alert(xhr.responseText);
         });

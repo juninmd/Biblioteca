@@ -36,4 +36,14 @@ footer{
     text-align: center;
 }
 
+#edt-div{
+    display: none;
+}
 
+#autor-div{
+    display: none;
+}
+
+#livro-div{
+    display: none;
+}

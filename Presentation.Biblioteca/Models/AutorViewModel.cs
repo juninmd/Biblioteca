@@ -7,7 +7,7 @@ namespace MVC.Biblioteca.Models
 {
     public class AutorViewModel
     {
-        public int idAutor { get; set; }
+        public int? idAutor { get; set; }
         public string nomeAutor { get; set; }
         public string sobrenomeAutor { get; set; }
     }

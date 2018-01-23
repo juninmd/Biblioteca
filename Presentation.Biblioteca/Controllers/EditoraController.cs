@@ -84,9 +84,7 @@ namespace Presentation.Biblioteca.Controllers
                     return Content("Erro", "Erro ao buscar editoras!");
 
 
-                var autores = (IEnumerable)JsonConvert.DeserializeObject<IEnumerable<EditoraViewModel>>
-                (response.Content.ReadAsStringAsync().Result).Where(a => a.idEditora == editora.idEditora);
-
+                //var editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
                 return View("_Form", editora);
             }
             catch (Exception ex)
@@ -132,13 +130,13 @@ namespace Presentation.Biblioteca.Controllers
         }
 
         [HttpPost]
-        public ActionResult PostPut(EditoraViewModel editora, int? idEditora = null)
+        public ActionResult Post(EditoraViewModel editora)
         {
             try
             {
-                var response = _editoraService.PostPut(new EditoraDto {idEditora = editora.idEditora, nomeEditora = editora.nomeEditora});
+                var response = _editoraService.Post(new EditoraDto {idEditora = editora.idEditora, nomeEditora = editora.nomeEditora });
                 if (!response.IsSuccessStatusCode)
-                    return Content("Erro");
+                    return Content("Erro ao cadastrar editora");
 
                 return View("_Grid", editora);
             }
@@ -147,23 +145,6 @@ namespace Presentation.Biblioteca.Controllers
                 return Content("Erro", ex.Message);
             }
         }
-
-        //[HttpPost]
-        //public ActionResult Post(EditoraViewModel editora)
-        //{
-        //    try
-        //    {
-        //        var response = _editoraService.Post(new EditoraDto {nomeEditora = editora.nomeEditora});
-        //        if (!response.IsSuccessStatusCode)
-        //            return Content("Erro ao cadastrar editora");
-
-        //        return View("_Grid", editora);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Content("Erro", ex.Message);
-        //    }
-        //}
 
 
     }

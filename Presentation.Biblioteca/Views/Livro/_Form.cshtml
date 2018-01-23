@@ -15,29 +15,33 @@
         <h5 id="tituloViewLivro">Cadastre um novo livro</h5>
         <form class="col s12">
             <div class="row">
+                <div class="col s2" id="livro-div">
+                    <input placeholder="ID do Livro" id="id_livro" type="text" name="id_livro" value="@Model.idLivro" required />
+                    <label for="id_livro">ID do Livro</label>
+                </div>
                 <div class="col s4">
                     <input placeholder="Nome do livro" id="nome_livro" type="text" class="validate" value="@Model.nomeLivro" required />
                     <label for="nome_livro">Nome do Livro</label>
                 </div>
-                <div class="col s4">
+                <div class="col s3">
                     <input placeholder="ISBN" id="isbn_livro" type="text" class="validate" maxlength="8" value="@Model.ISBN" required />
                     <label for="isbn_livro">ISBN</label>
                 </div>
-                <div class="col s4">
+                <div class="col s3">
                     <input placeholder="Data de Publicação" id="data_pub" type="text" class="validate" value="@Model.DataFormatada" required />
                     <label for="data_pub">Data de Publicação</label>
                 </div>
             </div>
             <div class="row">
-                <div class="col s4">
+                <div class="col s2">
                     <input placeholder="Preço(R$)" id="preco_livro" type="text" class="validate" value="@Model.precoLivro" required />
                     <label for="preco_livro">Preço(R$)</label>
                 </div>
-                <div class="col s4">
+                <div class="col s2">
                     <input placeholder="ID do Autor" id="id_autor" type="text" class="validate" value="@Model.idAutor" required />
                     <label for="id_autor">ID do Autor</label>
                 </div>
-                <div class="col s4">
+                <div class="col s2">
                     <input placeholder="ID da Editora" id="id_editora" type="text" class="validate" value="@Model.idEditora" required />
                     <label for="id_editora">ID da Editora</label>
                 </div>
@@ -65,13 +69,14 @@
         });
     });
 
-    $("#btnSalvarLivro").click(function (e) {
+    $("#btnSalvarLivro").click(function (e, idLivro, nomeLivro, ISBN, idAutor, dataPubLivro, precoLivro, idEditora) {
         e.preventDefault;
         if ($("#nome_livro").val() == "") {
             alert("É obrigatório o preenchimento de todos os campos!");
             return false;
         }
         $.post('@Url.Action("Post", "Livro")', {
+            idLivro: $("#id_livro"),
             nomeLivro: $("#nome_livro").val(),
             ISBN: $("#isbn_livro").val(),
             idAutor: $("#id_autor").val(),

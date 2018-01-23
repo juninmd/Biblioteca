@@ -23,6 +23,11 @@ namespace Application.Biblioteca.Services
             //return cliente.GetAsync("http://localhost:5002/api/Livro").Result;
         }
 
+        public HttpResponseMessage GetById(int? idLivro = null)
+        {
+            return BaseAppService.GetById("http://localhost:5002/api/Livro?idLivro=" + idLivro);
+        }
+
         public HttpResponseMessage Post(LivroDto livro)
         {
             return BaseAppService.Post("http://localhost:5002/api/Livro/Post", livro);

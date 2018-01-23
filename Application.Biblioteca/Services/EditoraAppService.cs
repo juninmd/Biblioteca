@@ -22,7 +22,7 @@ namespace Application.Biblioteca.Services
             return BaseAppService.Get("http://localhost:5002/api/Editora", idEditora);
         }
 
-        public HttpResponseMessage GetById(int idEditora)
+        public HttpResponseMessage GetById(int? idEditora = null)
         {
             return BaseAppService.GetById("http://localhost:5002/api/Editora?idEditora=" + idEditora);
         }
@@ -35,14 +35,6 @@ namespace Application.Biblioteca.Services
         public HttpResponseMessage Put(EditoraDto editora)
         {
             return BaseAppService.Put("http://localhost:5002/api/Editora", editora, editora.idEditora);
-        }
-
-        public HttpResponseMessage PostPut(EditoraDto editora)
-        {
-            if (!editora.idEditora.HasValue)
-                return BaseAppService.Post("http://localhost:5002/api/Editora/Post", editora);
-            else
-                return BaseAppService.Put("http://localhost:5002/api/Editora", editora, editora.idEditora);
         }
     }
 }

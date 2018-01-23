@@ -15,6 +15,10 @@
         <form class="col s12">
             <div class="row">
                 <br />
+                <div class="col s4 offset-s4" id="edt-div">
+                    <input placeholder="ID da Editora" id="id_editora" type="text" name="id_editora" value="@Model.idEditora" required />
+                    <label for="id_livro">ID da Editora</label>
+                </div>
                 <div class="col s4 offset-s4">
                     <input placeholder="Nome da Editora" id="nome_editora" type="text" name="nome_editora" value="@Model.nomeEditora" required />
                     <label for="nome_livro">Nome da Editora</label>
@@ -42,17 +46,17 @@
         });
     });
 
-    $("#btnSalvarEditora").click(function (e, idEditora) {
+    $("#btnSalvarEditora").click(function (e, idEditora, nomeEditora) {
         e.preventDefault;
-        if ($("#nome_editora").val() == "") {
+        if (!$("#nome_editora").val()) {
             alert("É obrigatório o preenchimento de todos os campos!");
             return false;
         }
-        $.post('@Url.Action("PostPut", "Editora")', {
-            idEditora: idEditora,
+        $.post('@Url.Action("Post", "Editora")', {
+            idEditora: $("#id_editora").val(),
             nomeEditora: $("#nome_editora").val()
         }).done(function () {
-
+            
         }).fail(function (xhr) {
             xhr.responseText;
         });

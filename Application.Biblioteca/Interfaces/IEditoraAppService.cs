@@ -12,9 +12,9 @@ namespace Application.Biblioteca.Interfaces
     {
         HttpResponseMessage Post(EditoraDto editora);
         HttpResponseMessage Get(int? idEditora = null);
-        HttpResponseMessage GetById(int idEditora);
+        HttpResponseMessage GetById(int? idEditora = null);
         HttpResponseMessage Delete(int idEditora);
         HttpResponseMessage Put(EditoraDto editora);
-        HttpResponseMessage PostPut(EditoraDto editora);
+
     }
 }
