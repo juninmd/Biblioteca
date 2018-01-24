@@ -44,7 +44,6 @@ namespace Presentation.Biblioteca.Controllers
             }
         }
 
-
         [HttpGet]
         public ActionResult BuscarForm()
         {
@@ -101,7 +100,6 @@ namespace Presentation.Biblioteca.Controllers
                 }
 
                 return View("_Form", livro);
-
             }
             catch (Exception ex)
             {
@@ -150,6 +148,6 @@ namespace Presentation.Biblioteca.Controllers
                 return Content("Erro", ex.Message);
             }
         }
-
     }
+
 }

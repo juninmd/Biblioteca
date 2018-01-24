@@ -1,7 +1,7 @@
 ﻿@model  IEnumerable<MVC.Biblioteca.Models.EditoraViewModel>
 @{ Layout = null; }
 
-<table class="responsive-table bordered highlight centered">
+<table class="responsive-table bordered highlight centered" id="tbl-editoras">
     <thead>
         <tr>
             <th>ID</th>
@@ -19,7 +19,7 @@
                     <td>@item.nomeEditora</td>
                     <td>
                         <span class="flow-text">
-                            <a class="btn-floating waves-effect waves-light grey darken-2" onclick="edit(@item.idEditora)" title="Editar" ><i class="material-icons">mode_edit</i></a> 
+                            <a class="btn-floating waves-effect waves-light grey darken-2" onclick="edit(@item.idEditora, '@item.nomeEditora')" title="Editar" ><i class="material-icons">mode_edit</i></a> 
                             <a class="btn-floating waves-effect waves-light red" onclick="excluirDados(@item.idEditora)" title="Excluir"><i class="material-icons">delete</i></a>
                         </span>
                     </td>
@@ -30,7 +30,6 @@
 </table>
 
 <script>
-
     function edit(idEditora, nomeEditora){
         $.get('@Url.Action("Edit", "Editora")', {
             idEditora: idEditora,
@@ -43,28 +42,12 @@
             $("#btnNovaEditora").hide();
             $("#tituloViewEdt").html("<h5>Editar Editora</h5>");
             $("#edt-div").show();
-            $("#nome_editora").val(nomeEditora);
         }).fail(function (xhr) {
             alert(xhr.responseText);
         });
     }
 
-    @*function buscarForm(idEditora) {
-        $.get('@Url.Action("BuscarForm", "Editora")',{
-            idEditora: idEditora
-        }).done(function (data) {
-            $("#divCadastroEditoras").html(data);
-            $("#divContentEditoras").hide();
-            $(".grid_dados").show();
-            $("#btnNovaEditora").hide();
-            $("#nome_editora").html(nomeEditora);
-        }).fail(function (xhr) {
-            alert(xhr.responseText);
-        });
-    }*@
-
     function excluirDados(idEditora) {
-
         var conf = confirm("Deseja realmente excluir?");
         if (conf == true) {
             $.get('@Url.Action("ExcluirDados", "Editora")', {

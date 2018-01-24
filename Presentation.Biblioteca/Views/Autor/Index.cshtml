@@ -27,7 +27,6 @@
 <script>
 
     var buscarGrid = (function buscar() {
-
         $.get('@Url.Action("BuscarGrid", "Autor")').done(function (data) {
             $("#divContentAutores").html(data);
         }).fail(function (xhr) {
@@ -38,7 +37,6 @@
     })();
 
     function buscarForm() {
-
         $.get('@Url.Action("BuscarForm", "Autor")').done(function (data) {
             $("#divCadastroAutores").html(data);
             $("#divContentAutores").hide();

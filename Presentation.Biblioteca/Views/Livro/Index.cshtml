@@ -31,7 +31,6 @@
     })();
 
     function buscarForm() {
-
         $.get('@Url.Action("BuscarForm", "Livro")').done(function (data) {
             $("#divCadastroLivros").html(data);
             $("#divContentLivros").hide();

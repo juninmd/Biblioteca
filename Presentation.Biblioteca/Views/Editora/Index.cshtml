@@ -41,14 +41,12 @@
     })();
     
     function buscarForm() {
-        //chama o controller buscarDados mas ele chama o formulário para um novo cadastro
         $.get('@Url.Action("BuscarForm", "Editora")').done(function (data) {
             $("#divCadastroEditoras").html(data);
             $("#divContentEditoras").hide();
             $(".grid_dados").show();
             $("#btnNovaEditora").hide();
             $("#id_editora").hide();
-            //$("#edt-div").hide();
         }).fail(function (xhr) {
             alert(xhr.responseText);
         });

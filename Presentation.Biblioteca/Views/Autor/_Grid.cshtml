@@ -20,7 +20,7 @@
                     <td>@item.sobrenomeAutor</td>
                     <td>
                         <span class="flow-text">
-                            <a class="btn-floating waves-effect waves-light grey darken-2" title="Editar" onclick="edit(@item.idAutor)"><i class="material-icons">mode_edit</i></a>
+                            <a class="btn-floating waves-effect waves-light grey darken-2" title="Editar" onclick="edit(@item.idAutor, '@item.nomeAutor', '@item.sobrenomeAutor')"><i class="material-icons">mode_edit</i></a>
                             <a class="btn-floating waves-effect waves-light red" title="Excluir" onclick="excluirDados(@item.idAutor)"><i class="material-icons">delete</i></a>
                         </span>
                     </td>
@@ -34,13 +34,14 @@
 
     function edit(idAutor, nomeAutor, sobrenomeAutor) {
         $.get('@Url.Action("Edit", "Autor")', {
-            idAutor: idAutor
+            idAutor: idAutor,
+            nomeAutor: nomeAutor,
+            sobrenomeAutor: sobrenomeAutor
         }).done(function (data) {
             $("#divCadastroAutores").html(data);
             $("#divContentAutores").hide();
             $(".grid_dados").show();
             $("#btnNovoAutor").hide();
-            $("#nome_autor").val(data.nomeAutor);
             $("#tituloViewAutor").html("<h5>Editar Autor</h5>");
             $("#autor-div").show();
         }).fail(function (xhr) {
@@ -60,7 +61,6 @@
     }
 
     function excluirDados(idAutor) {
-
         var conf = confirm("Deseja realmente excluir?");
         if (conf == true) {
             $.get('@Url.Action("ExcluirDados", "Autor")', {

@@ -52,10 +52,5 @@ namespace API.Biblioteca.Controllers
             _livroRepository.Put(livro);
             return Ok();
         }
-
-
-
-
-                
     }
 }

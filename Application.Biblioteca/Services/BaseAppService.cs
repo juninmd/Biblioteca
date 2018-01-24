@@ -25,7 +25,6 @@ namespace Application.Biblioteca.Services
             return _client.GetAsync(uri).Result;
         }
         
-
         public static HttpResponseMessage Post(string uri, object parametros)
         {
             _client = new HttpClient();
@@ -52,10 +51,7 @@ namespace Application.Biblioteca.Services
             _client = new HttpClient();
             return _client.PutAsync(uri, conteudo).Result;
         }
-
-
     }
-
 }
 
 

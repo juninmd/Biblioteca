@@ -52,7 +52,6 @@ namespace Presentation.Biblioteca.Controllers
             {
                 return Content("Erro", ex.Message);
             }
-
         }
 
         [HttpGet]
@@ -75,6 +74,7 @@ namespace Presentation.Biblioteca.Controllers
             }
         }
 
+        //Apenas para trazer a view com os dados para editar
         public ActionResult Edit(EditoraViewModel editora)
         {
             try
@@ -84,7 +84,7 @@ namespace Presentation.Biblioteca.Controllers
                     return Content("Erro", "Erro ao buscar editoras!");
 
 
-                //var editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
+                //dynamic editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
                 return View("_Form", editora);
             }
             catch (Exception ex)
@@ -93,25 +93,6 @@ namespace Presentation.Biblioteca.Controllers
             }
         }
         //var editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result)
-
-        [HttpPut]
-        public ActionResult EditarDados(EditoraViewModel edt)
-        {
-            try
-            {
-                var response = _editoraService.Put(new EditoraDto {idEditora = edt.idEditora, nomeEditora = edt.nomeEditora});
-                if (!response.IsSuccessStatusCode)
-                    return Content("Erro", "Erro ao buscar dados!");
-
-                var editora = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
-                return View("_Form", editora);
-            }
-            catch (Exception ex)
-            {
-                return Content("Erro", ex.Message);
-            }
-        }
-
 
         public ActionResult ExcluirDados(int idEditora)
         {
@@ -129,6 +110,7 @@ namespace Presentation.Biblioteca.Controllers
             }
         }
 
+        //Insere e Edita
         [HttpPost]
         public ActionResult Post(EditoraViewModel editora)
         {
@@ -145,7 +127,6 @@ namespace Presentation.Biblioteca.Controllers
                 return Content("Erro", ex.Message);
             }
         }
-
-
     }
+
 }

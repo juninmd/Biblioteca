@@ -21,6 +21,11 @@ namespace Application.Biblioteca.Services
             return BaseAppService.Get("http://localhost:5002/api/Autor");
         }
 
+        public HttpResponseMessage GetById(int? idAutor = null)
+        {
+            return BaseAppService.GetById("http://localhost:5002/api/Autor?idAutor=" + idAutor);
+        }
+
         public HttpResponseMessage Post(object autor)
         {
             return BaseAppService.Post("http://localhost:5002/api/Autor/Post", autor);

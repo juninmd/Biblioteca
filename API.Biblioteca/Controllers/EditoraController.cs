@@ -22,10 +22,8 @@ namespace API.Biblioteca.Controllers
 
         public IHttpActionResult Post(EditoraDto editora)
         {
-            //if (string.IsNullOrEmpty(editora.nomeEditora))
-            //    return BadRequest("Informar dados da editora");
-
-            //_editoraRepository.Post(editora);
+            if (string.IsNullOrEmpty(editora.nomeEditora))
+                return BadRequest("Informar dados da editora");
 
             _editoraService.Post(editora);
             return Ok();
@@ -55,12 +53,5 @@ namespace API.Biblioteca.Controllers
             _editoraRepository.Put(editora);
             return Ok();
         }
-
-        //public IHttpActionResult PostPut(EditoraDto editora)
-        //{
-        //    _editoraService.Post(editora);
-        //    return Ok();
-        //}
-
     }
 }

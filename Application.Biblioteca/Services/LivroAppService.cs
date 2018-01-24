@@ -19,8 +19,6 @@ namespace Application.Biblioteca.Services
         public HttpResponseMessage Get(int? idAutor = null)
         {
             return BaseAppService.Get("http://localhost:5002/api/Livro");
-            //var cliente = new HttpClient();
-            //return cliente.GetAsync("http://localhost:5002/api/Livro").Result;
         }
 
         public HttpResponseMessage GetById(int? idLivro = null)

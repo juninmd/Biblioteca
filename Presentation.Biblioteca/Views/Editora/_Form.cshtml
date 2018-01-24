@@ -21,7 +21,7 @@
                 </div>
                 <div class="col s4 offset-s4">
                     <input placeholder="Nome da Editora" id="nome_editora" type="text" name="nome_editora" value="@Model.nomeEditora" required />
-                    <label for="nome_livro">Nome da Editora</label>
+                    <label for="nome_editora">Nome da Editora</label>
                 </div>
             </div>
             <button class="btn waves-effect waves-light" type="submit" id="btnSalvarEditora">
@@ -34,7 +34,6 @@
 </div>
 
 <script>
-
     $(".btn_voltar").click(function () {
         $.get('@Url.Action("BuscarGrid", "Editora")').done(function () {
             $("#divContentEditoras").show();
@@ -61,24 +60,5 @@
             xhr.responseText;
         });
     });
-
-    @*function salvarDados(idEditora) {
-
-        $.post('@Url.Action("PostPut", "Editora")', {
-            idEditora: idEditora,
-            nomeEditora: $("#nome_editora").val()
-        }).done(function (data) {
-
-        }).fail(function (xhr) {
-            alert(xhr.responseText);
-        });
-    }*@
-
-
-
-
-
-
-
 </script>
 

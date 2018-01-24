@@ -29,7 +29,7 @@
                     <td>@item.idEditora</td>
                     <td>
                         <span class="flow-text">
-                            <a class="btn-floating waves-effect waves-light grey darken-2" onclick="edit(@item.idLivro)" title="Editar"><i class="material-icons">mode_edit</i></a>
+                            <a class="btn-floating waves-effect waves-light grey darken-2" onclick="edit(@item.idLivro, '@item.nomeLivro', '@item.ISBN', @item.idAutor, '@item.dataPubLivro', @item.precoLivro, @item.idEditora)" title="Editar"><i class="material-icons">mode_edit</i></a>
                             <a class="btn-floating waves-effect waves-light red" onclick="excluirDados(@item.idLivro)" title="Excluir"><i class="material-icons">delete</i></a>
                         </span>
                     </td>
@@ -45,7 +45,13 @@
 
     function edit(idLivro, nomeLivro, ISBN, idAutor, dataPubLivro, precoLivro, idEditora) {
         $.get('@Url.Action("Edit", "Livro")', {
-            idLivro: idLivro
+            idLivro: idLivro,
+            nomeLivro: nomeLivro,
+            ISBN: ISBN,
+            idAutor: idAutor,
+            dataPubLivro: dataPubLivro,
+            precoLivro: precoLivro,
+            idEditora: idEditora
         }).done(function (data) {
             $("#divCadastroLivros").html(data);
             $("#divContentLivros").hide();
@@ -57,17 +63,7 @@
             alert(xhr.responseText);
         });
     }
-
-    function editarDados(idLivro) {
-        $.get('@Url.Action("editarDados", "Livro")', {
-            idLivro: idLivro
-        }).done(function (data) {
-            $("#divContentLivros").html(data);
-        }).fail(function (xhr) {
-            xhr.responseText;
-        });
-    }
-
+    
     function excluirDados(idLivro) {
 
         var conf = confirm("Deseja realmente excluir?");

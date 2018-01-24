@@ -45,24 +45,6 @@ namespace Presentation.Biblioteca.Controllers
             }
         }
 
-        /*
-            try
-            {
-                var App = _autorService.Get();
-                if (!resposta.IsSuccessStatusCode)
-                {
-                    return View("Erro", "Erro ao buscar autores!");
-                }
-                var autor = JsonConvert.DeserializeObject<IEnumerable<AutorViewModel>>(resposta.Content.ReadAsStringAsync().Result);
-
-                return View("_Grid", autor);
-                }
-                catch (Exception ex)
-                {
-                    return View("Erro", ex.Message);
-                }
-                */
-
         [HttpGet]
         public ActionResult BuscarForm()
         {
@@ -126,7 +108,6 @@ namespace Presentation.Biblioteca.Controllers
             {
                 return PartialView("Erro", ex.Message);
             }
-
         }
 
         public ActionResult ExcluirDados(int idAutor)
@@ -139,12 +120,10 @@ namespace Presentation.Biblioteca.Controllers
 
                 return View("_Grid");
             }
-
             catch (Exception ex)
             {
                 return Content(ex.Message);
             }
-
         }
 
         [HttpPost]
@@ -163,6 +142,6 @@ namespace Presentation.Biblioteca.Controllers
                 return Content("Erro", ex.Message);
             }
         }
-
     }
+
 }
