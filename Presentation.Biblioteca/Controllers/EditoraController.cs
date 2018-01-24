@@ -84,7 +84,12 @@ namespace Presentation.Biblioteca.Controllers
                     return Content("Erro", "Erro ao buscar editoras!");
 
 
-                //dynamic editoras = JsonConvert.DeserializeObject<EditoraViewModel>(response.Content.ReadAsStringAsync().Result);
+                //JavaScriptSerializer serializador = new JavaScriptSerializer();
+                //dynamic editoras = (EditoraViewModel)serializador.Deserialize(response.Content.ReadAsStringAsync().Result, typeof(EditoraViewModel));
+                //serializador.ConvertToType<EditoraViewModel>(editoras);
+
+                //dynamic editorass = JsonConvert.DeserializeObject<List<EditoraViewModel>>(response.Content.ReadAsStringAsync().Result);
+
                 return View("_Form", editora);
             }
             catch (Exception ex)
