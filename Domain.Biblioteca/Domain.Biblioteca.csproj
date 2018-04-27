@@ -68,6 +68,7 @@
     <Compile Include="Autor\AutorService.cs" />
     <Compile Include="Autor\IAutorRepository.cs" />
     <Compile Include="Autor\IAutorService.cs" />
+    <Compile Include="DataBaseConnect\IDataBaseConnect.cs" />
     <Compile Include="Editora\EditoraDto.cs" />
     <Compile Include="Editora\EditoraService.cs" />
     <Compile Include="Editora\IEditoraRepository.cs" />
