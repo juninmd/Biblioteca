@@ -1,10 +1,5 @@
-﻿using Domain.Biblioteca.Autor.dtoAutor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Domain.Biblioteca.Autor;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Biblioteca.Interfaces
 {
@@ -16,5 +11,4 @@ namespace Application.Biblioteca.Interfaces
         HttpResponseMessage Delete(int idAutor);
         HttpResponseMessage Put(AutorDto autor);
     }
-
 }

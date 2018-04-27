@@ -1,10 +1,5 @@
 ﻿using Application.Biblioteca.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Biblioteca.Autor.dtoAutor;
+using Domain.Biblioteca.Autor;
 using System.Net.Http;
 
 namespace Application.Biblioteca.Services
@@ -35,6 +30,5 @@ namespace Application.Biblioteca.Services
         {
             return BaseAppService.Put("http://localhost:5002/api/Autor/Put", autor, autor.idAutor);
         }
-
     }
 }

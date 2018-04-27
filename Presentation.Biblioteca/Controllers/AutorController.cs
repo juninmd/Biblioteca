@@ -1,13 +1,11 @@
 ﻿using Application.Biblioteca.Interfaces;
-using Application.Biblioteca.Services;
-using Domain.Biblioteca.Autor.dtoAutor;
-using MVC.Biblioteca.Models;
+using Domain.Biblioteca.Autor;
 using Newtonsoft.Json;
+using Presentation.Biblioteca.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Presentation.Biblioteca.Controllers
@@ -106,7 +104,7 @@ namespace Presentation.Biblioteca.Controllers
             }
             catch (Exception ex)
             {
-                return PartialView("Erro", ex.Message);
+                return PartialView("Error");
             }
         }
 

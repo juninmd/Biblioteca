@@ -188,9 +188,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AutorViewModel.cs" />
-    <Compile Include="Models\EditoraViewModel.cs" />
-    <Compile Include="Models\LivroViewModel.cs" />
+    <Compile Include="ViewModels\AutorViewModel.cs" />
+    <Compile Include="ViewModels\EditoraViewModel.cs" />
+    <Compile Include="ViewModels\LivroViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

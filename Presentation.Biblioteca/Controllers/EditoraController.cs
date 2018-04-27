@@ -1,21 +1,10 @@
 ﻿using Application.Biblioteca.Interfaces;
-using Application.Biblioteca.Services;
 using Domain.Biblioteca.Editora;
-using MVC.Biblioteca.Models;
 using Newtonsoft.Json;
-using Presentation.Biblioteca.Controllers;
+using Presentation.Biblioteca.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
 
 namespace Presentation.Biblioteca.Controllers
 {
