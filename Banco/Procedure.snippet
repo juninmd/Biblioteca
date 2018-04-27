@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<_locDefinition xmlns="urn:locstudio">
+		<_locDefault _loc="locNone" />
+		<_locTag _loc="locData">Title</_locTag>
+		<_locTag _loc="locData">Description</_locTag>
+		<_locTag _loc="locData">Author</_locTag>
+		<_locTag _loc="locData">ToolTip</_locTag>
+	</_locDefinition>
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Procedure</Title>
+			<Shortcut>proc0</Shortcut>
+			<Description>Cria o bloco de criação para procedure no padrão da Momentum</Description>
+			<Author>Thiago Teixeira</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>NomeProcedure</ID>
+					<ToolTip>Nome da Procedure</ToolTip>
+					<Default>NomeProcedure</Default>
+				</Literal>
+				<Literal>
+					<ID>ArquivoFonte</ID>
+					<ToolTip>Nome do Arquivo Fonte</ToolTip>
+					<Default>ArquivoFonte</Default>
+				</Literal>
+				<Literal>
+					<ID>Objetivo</ID>
+					<ToolTip>Descrição da Procedure</ToolTip>
+					<Default>Objetivo</Default>
+				</Literal>
+				<Literal>
+					<ID>Autor</ID>
+					<ToolTip>Autor da Procedure</ToolTip>
+					<Default>Thiago Teixeira</Default>
+				</Literal>
+				<Literal>
+					<ID>Data</ID>
+					<ToolTip>Data da criação da Procedure</ToolTip>
+					<Default>01/01/2018</Default>
+				</Literal>
+				<Literal>
+					<ID>Procedure</ID>
+					<ToolTip>Procedure</ToolTip>
+					<Default>SELECT </Default>
+				</Literal>
+			</Declarations>
+			<Code Language="SQL">
+<![CDATA[IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[GKSSP_$NomeProcedure$]') AND objectproperty(id, N'IsPROCEDURE')=1)
+	DROP PROCEDURE [dbo].[GKSSP_$NomeProcedure$]
+GO
+
+CREATE PROCEDURE [dbo].[GKSSP_$NomeProcedure$]
+
+	AS
+
+	/*
+	Documentação
+	Arquivo Fonte.....: $ArquivoFonte$.sql
+	Objetivo..........: $Objetivo$
+	Autor.............: SMN - $Autor$
+ 	Data..............: $Data$
+	Ex................: EXEC [dbo].[GKSSP_$NomeProcedure$]
+
+	*/
+
+	BEGIN
+	
+		$selected$$end$
+
+	END
+GO]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
